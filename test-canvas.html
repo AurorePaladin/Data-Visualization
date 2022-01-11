@@ -22,4 +22,13 @@
   ctx.lineTo(250, 75); // 中间点坐标
   ctx.lineTo(300, 100); // 终点坐标
   ctx.stroke(); // 绘制线段
+
+  //  绘制曲线
+  ctx.beginPath();
+  ctx.lineWidth = 2; // 线条宽度
+  ctx.strokeStyle = "yellow"; // 线条填充色
+  ctx.fillStyle = "green";
+  ctx.arc(200, 200, 50, 0, 2 * Math.PI); // 绘制圆形  （圆心X轴，圆心Y轴， 半径， 起始角度， 终止角度 ）
+  ctx.stroke();
+  ctx.fill();
 </script>
