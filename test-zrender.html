@@ -25,5 +25,31 @@
       lineWidth: 0,
     },
   });
+  const line1 = new zrender.Polyline({
+    shape: {
+      points: [
+        [100, 100],
+        [250, 75],
+        [300, 100],
+      ],
+    },
+    style: {
+      stroke: "gold",
+      lineWidth: 1,
+    },
+  });
+  const circle = new zrender.Circle({
+    shape: {
+      cx: 200,
+      cy: 200,
+      r: 50,
+    },
+    style: {
+      fill: "pink",
+      stroke: "purple",
+      lineWidth: 1,
+    },
+  });
   zr.add(rect);
+  zr.add(circle);
 </script>
