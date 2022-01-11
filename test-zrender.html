@@ -50,7 +50,20 @@
       lineWidth: 1,
     },
   });
+  const point1 = new zrender.Polyline({
+    shape: {
+      points: [
+        [300, 300],
+        [301, 301],
+      ],
+    },
+    style: {
+      stroke: "black",
+      lineWidth: 1,
+    },
+  });
   zr.add(rect);
   zr.add(line1);
   zr.add(circle);
+  zr.add(point1);
 </script>
