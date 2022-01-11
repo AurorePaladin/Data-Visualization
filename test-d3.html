@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>D3</title>
+    <script src="https://d3js.org/d3.v5.js"></script>
+  </head>
+  <body>
+    <p id="">vue</p>
+    <p>react</p>
+    <p>flutter</p>
+    <button id="datum">datum</button>
+    <button id="data">data</button>
+  </body>
+</html>
+<script>
+  const body = d3.select("body");
+  const p = body.selectAll("p");
+  function doDatum() {
+    const str = "Framwork";
+    p.datum(str);
+    p.text(function (d, i) {
+      return `${d}-${i}`;
+    });
+  }
+  function doData() {
+    const dataset = ["vue", "react", "flutter"];
+    p.data(dataset).text(function (d, i) {
+      return `${d}-${i}`;
+    });
+  }
+  document.getElementById("datum").addEventListener("click", function (e) {
+    doDatum();
+  });
+  document.getElementById("data").addEventListener("click", function (e) {
+    doData();
+  });
+</script>
