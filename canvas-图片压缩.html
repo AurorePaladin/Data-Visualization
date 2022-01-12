@@ -26,7 +26,7 @@
     });
     reader.readAsDataURL(file); // 浏览器提供的 blob 对象， 标记文件
   }
-  function compress(base64Image) {
+  function compress(base64Image, callback) {
     //   console.log(base64Image);
     const image = new Image();
     let maxW = 1024;
@@ -71,14 +71,21 @@
 
       // 绘制压缩后的图片
       const compressImage = canvas.toDataURL("imagee/jpeg", 0.8); // toDataURL第二个参数是压缩度，数字越小越失帧
+      callback && callback(compressImage);
       const _image = new Image();
       _image.src = compressImage;
       document.body.appendChild(_image);
       canvas.remove();
+      console.log("压缩比：" + image.src.length / _image.src.length);
     });
     image.src = base64Image;
     document.body.appendChild(image);
   }
+
+  function uploadToServer(compressImage) {
+    console.log("上传至服务器");
+  }
+
   upload.addEventListener("change", function (e) {
     // console.log(e.target.files);
     // 图片是否存在
@@ -99,6 +106,8 @@
       return;
     }
     // 图片压缩
-    convertImageToBase64(file, compress);
+    convertImageToBase64(file, (base64Image) =>
+      compress(base64Image, uploadToServer)
+    );
   });
 </script>
