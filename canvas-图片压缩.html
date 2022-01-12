@@ -55,6 +55,26 @@
         maxW = naturalWidth;
         maxH = naturalHeight;
       }
+      // 绘制 canvas 画布，画布的大小为图片压缩后的尺寸
+      const canvas = document.createElement("canvas");
+      canvas.setAttribute("id", "__compress__");
+      canvas.width = maxW;
+      canvas.height = maxH;
+      canvas.style.visibility = "visible";
+      document.body.appendChild(canvas);
+
+      const ctx = canvas.getContext("2d");
+      // 清除画布
+      ctx.clearRect(0, 0, maxW, maxH);
+      // 绘制图片
+      ctx.drawImage(image, 0, 0, maxW, maxH);
+
+      // 绘制压缩后的图片
+      const compressImage = canvas.toDataURL("imagee/jpeg", 0.8); // toDataURL第二个参数是压缩度，数字越小越失帧
+      const _image = new Image();
+      _image.src = compressImage;
+      document.body.appendChild(_image);
+      canvas.remove();
     });
     image.src = base64Image;
     document.body.appendChild(image);
