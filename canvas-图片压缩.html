@@ -26,6 +26,39 @@
     });
     reader.readAsDataURL(file); // 浏览器提供的 blob 对象， 标记文件
   }
+  function compress(base64Image) {
+    //   console.log(base64Image);
+    const image = new Image();
+    let maxW = 1024;
+    let maxH = 1024;
+    image.addEventListener("load", function (e) {
+      let ratio; // 图片的压缩比
+      let needCompress = false; // 是否需要压缩
+      console.log(image.naturalWidth, image.naturalHeight);
+      // 处理图片的宽高
+      if (maxW < image.naturalWidth) {
+        needCompress = true;
+        ratio = image.naturalWidth / maxW;
+        console.log(ratio);
+        maxH = image.naturalHeight / ratio;
+        console.log(maxH);
+      }
+      if (maxH < image.naturalHeight) {
+        needCompress = true;
+        ratio = image.naturalHeight / maxH;
+        console.log(ratio);
+        maxW = image.naturalWidth / ratio;
+        console.log(maxW);
+      }
+      // 如果不需要压缩，获取图片的实际尺寸
+      if (!needCompress) {
+        maxW = naturalWidth;
+        maxH = naturalHeight;
+      }
+    });
+    image.src = base64Image;
+    document.body.appendChild(image);
+  }
   upload.addEventListener("change", function (e) {
     // console.log(e.target.files);
     // 图片是否存在
@@ -46,6 +79,6 @@
       return;
     }
     // 图片压缩
-    convertImageToBase64(file);
+    convertImageToBase64(file, compress);
   });
 </script>
