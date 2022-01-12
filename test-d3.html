@@ -16,19 +16,19 @@
   </body>
 </html>
 <script>
-  const body = d3.select("body");
-  const p = body.selectAll("p");
+  const body = d3.select("body"); // D3 获取 DOM 的方式
+  const p = body.selectAll("p"); // 注意： 这里的 body 和 p 其实是 d3 DOM 对象
   function doDatum() {
-    const str = "Framwork";
-    p.datum(str);
+    const str = "Framwork"; // 创建文本
+    p.datum(str); // 将要对 p 里的文本进行修改
     p.text(function (d, i) {
-      return `${d}-${i}`;
+      return `${d}-${i}`; // 调用p.datum后 需调用 p.text 对 p 的文本进行修改
     });
   }
   function doData() {
-    const dataset = ["vue", "react", "flutter"];
+    const dataset = ["vue", "react", "flutter"]; // 创建数组文本
     p.data(dataset).text(function (d, i) {
-      return `${d}-${i}`;
+      return `${d}-${i}`; // 调用p.data后 需调用 p.text 对 p 的文本进行修改
     });
   }
   document.getElementById("datum").addEventListener("click", function (e) {
