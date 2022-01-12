@@ -12,11 +12,18 @@
 </html>
 <script>
   const upload = document.getElementById("upload");
+  const ACCEPT = ["image/jpg", "image/jpg", "image/jpeg"];
   upload.addEventListener("change", function (e) {
     // console.log(e.target.files);
     // 图片是否存在
     const [file] = e.target.files;
     if (!file) {
+      return;
+    }
+    // 图片类型检查
+    const { type: fileType, size: fileSize } = file;
+    if (ACCEPT.includes(fileType < 0)) {
+      alert(`不支持[${fileType}]文件类型`);
       return;
     }
   });
