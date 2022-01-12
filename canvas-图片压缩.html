@@ -15,6 +15,17 @@
   const ACCEPT = ["image/jpg", "image/jpg", "image/jpeg"];
   const MAXSIZE = 3 * 1024 * 1024;
   const MAXSIZE_STR = "3MB";
+  function convertImageToBase64(file, callback) {
+    let reader = new FileReader(); // 实例化 fileReader 对象，读取文件类容
+    reader.addEventListener("load", function (e) {
+      // console.log(e.target.result);
+      // console.log(reader.result);
+      const base64Image = e.target.result;
+      callback && callback(base64Image);
+      reader = null; //回收 reader 对象的内存
+    });
+    reader.readAsDataURL(file); // 浏览器提供的 blob 对象， 标记文件
+  }
   upload.addEventListener("change", function (e) {
     // console.log(e.target.files);
     // 图片是否存在
@@ -22,7 +33,7 @@
     if (!file) {
       return;
     }
-    // 图片类型检查
+    // 图片大小检查
     const { type: fileType, size: fileSize } = file;
     if (ACCEPT.includes(fileType < 0)) {
       alert(`不支持[${fileType}]文件类型`);
@@ -34,5 +45,7 @@
       upload.value = "";
       return;
     }
+    // 图片压缩
+    convertImageToBase64(file);
   });
 </script>
