@@ -57,13 +57,33 @@
       //   },
       label: {
         formatter: (v) => {
-          return v + "k";
+          return v + "k"; // 新版g2plot Y轴 单位已集成进 label 里了,此处用于修正
         },
         style: {
           fill: "#FE740C",
         },
       },
     },
+    annotations: [
+      {
+        type: "text",
+        position: ["min", "median"],
+        content: "辅助标记",
+        offsetY: -4,
+        style: {
+          textBaseline: "bottom",
+        },
+      },
+      {
+        type: "line",
+        start: ["min", "median"],
+        end: ["max", "median"],
+        style: {
+          stroke: "red",
+          lineDash: [2, 2],
+        },
+      },
+    ],
   }); // 初始化绘图对象
 
   line.render(); //调用 render 方法 完成绘图
