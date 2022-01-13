@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>antV-g2</title>
+    <script src="https://unpkg.com/@antv/g2plot@latest/dist/g2plot.min.js"></script>
+  </head>
+  <body>
+    <div id="g2-chart"></div>
+  </body>
+</html>
+<script>
+  const data = [
+    { year: "1991", value: 3 },
+    { year: "1992", value: 4 },
+    { year: "1993", value: 3.5 },
+    { year: "1994", value: 5 },
+    { year: "1995", value: 4.9 },
+    { year: "1996", value: 6 },
+    { year: "1997", value: 7 },
+    { year: "1998", value: 9 },
+    { year: "1999", value: 13 },
+  ];
+  const chartDom = document.getElementById("g2-chart");
+  const line = new G2Plot.Line(chartDom, {
+    title: {
+      visible: true,
+      text: "g2折线图",
+    },
+    data,
+    xField: "year",
+    yField: "value",
+  }); // 初始化绘图对象
+  line.render(); //调用 render 方法 完成绘图
+</script>
