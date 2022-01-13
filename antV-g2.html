@@ -12,6 +12,7 @@
   </body>
 </html>
 <script>
+  const { Line } = G2Plot;
   const data = [
     { year: "1991", value: 3 },
     { year: "1992", value: 4 },
@@ -24,7 +25,7 @@
     { year: "1999", value: 13 },
   ];
   const chartDom = document.getElementById("g2-chart");
-  const line = new G2Plot.Line(chartDom, {
+  const line = new Line(chartDom, {
     title: {
       visible: true,
       text: "g2折线图",
@@ -49,13 +50,22 @@
     label: {
       visible: true, // 标签
     },
-    color: "green",
+    color: "green", // 定义折线颜色
     yAxis: {
-      formatter: (v) => {
-        return `${v}k`;
+      //   formatter: (v) => {
+      //   return `${v}k`;   // 等价于 return v + 'k'
+      //   },
+      label: {
+        formatter: (v) => {
+          return v + "k";
+        },
+        style: {
+          fill: "#FE740C",
+        },
       },
     },
   }); // 初始化绘图对象
+
   line.render(); //调用 render 方法 完成绘图
 </script>
 <!-- antV g2 绘图流程 -->
