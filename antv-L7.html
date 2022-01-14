@@ -44,9 +44,9 @@
         // 获取坐标信息
         console.log(data);
         data.features = data.features.filter((item) => {
-          return item.properties.capacity > 800;
+          return item.properties.capacity > 800; // 过滤数据 将发电量低于800的电站过滤
         });
-        const pointLayer = new L7.PointLayer({})
+        const pointLayer = new L7.PointLayer({}) // 初始化绘图对象
           .source(data)
           .shape("circle") // 地图坐标点样式 支持 square,triangle 等等
           .size("capacity", [0, 16]) // capacity表示发电容量  size属性有两个参数 1. key  2. 数组范围  根据返回数值设置点的大小
@@ -69,3 +69,11 @@
       });
   });
 </script>
+<!-- L7绘制地图流程 -->
+<!-- 1.引入 js 库-->
+<!-- 2.编写渲染容器 DOM -->
+<!-- 3.初始化地图对象 L7.Scene -->
+<!-- 4.请求数据 -->
+<!-- 5.数据清洗 -->
+<!-- 6.初始化绘图对象（如：L7.PointLayer） -->
+<!-- 7.调用 L7.Scene.addLayer 方法绘图 -->
