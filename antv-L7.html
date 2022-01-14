@@ -30,9 +30,42 @@
     map: new L7.GaodeMap({
       style: "dark",
       center: [120.19382669582967, 30.258134], // 杭州市的坐标
-      pitch: 0,
-      zoom: 6,
+      pitch: 0, // 看地图的视角角度 0为俯视 90为平视
+      zoom: 4, // 缩放比例 数值越大越细致能看到街道楼栋
       token: "***",
     }),
+  });
+  scene.on("loaded", () => {
+    fetch(
+      "https://gw.alipayobjects.com/os/basement_prod/337ddbb7-aa3f-4679-ab60-d64359241955.json" // 全球发电站坐标数据
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        // 获取坐标信息
+        console.log(data);
+        data.features = data.features.filter((item) => {
+          return item.properties.capacity > 800;
+        });
+        const pointLayer = new L7.PointLayer({})
+          .source(data)
+          .shape("circle") // 地图坐标点样式 支持 square,triangle 等等
+          .size("capacity", [0, 16]) // capacity表示发电容量  size属性有两个参数 1. key  2. 数组范围  根据返回数值设置点的大小
+          .color("capacity", [
+            // color 传入一个key， 从小到大设置颜色的深浅
+            "skyblue",
+            "yellow",
+            "blue",
+            "pink",
+            "gold",
+            "red",
+          ])
+          .active(true) // 点的 交互 效果
+          .style({
+            opacity: 0.5, // 点的透明度
+            strokeWidth: 0, // 点的边框
+          });
+
+        scene.addLayer(pointLayer); // 调用方法完成绘制
+      });
   });
 </script>
