@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Echarts入门</title>
+    <script src="https://cdn.jsdelivr.net/npm/echarts@4.7.0/dist/echarts.min.js"></script>
+    <style>
+      #chart {
+        width: 800px;
+        height: 400px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="chart"></div>
+  </body>
+</html>
+<script>
+  const chartDom = document.getElementById("chart"); // 获取 DOM 对象
+  const chart = echarts.init(chartDom); // 初始化 echarts 对象容器
+  chart.setOption({
+    title: {
+      text: "快速入门ECharts开发", // 柱状图标题
+    },
+    xAxis: {
+      data: ["食品", "数码", "服饰", "箱包"], // X轴数据描述
+    },
+    yAxis: {},
+    series: {
+      type: "bar", // 柱状图
+      data: [100, 120, 90, 150],
+    },
+  });
+</script>
