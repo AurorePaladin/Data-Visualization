@@ -443,29 +443,19 @@
 <script>
   const chartDom = document.getElementById("chart"); // 获取 DOM 对象
   const chart = echarts.init(chartDom, "roma"); // 初始化 echarts 对象容器
-  const option = {
+  chart.setOption({
+    title: {
+      text: "快速入门ECharts开发", // 柱状图标题
+    },
     xAxis: {
-      type: "category",
+      data: ["食品", "数码", "服饰", "箱包"], // X轴数据描述
     },
     yAxis: {},
-    dataset: {
-      source: [
-        ["一季度", 79, 100, "分类1", 50],
-        ["二季度", 81, 112, "分类2", 60],
-        ["三季度", 88, 96, "分类3", 55],
-        ["四季度", 72, 123, "分类4", 70],
-      ],
+    series: {
+      type: "bar", // 柱状图
+      data: [100, 120, 90, 150],
     },
-    series: [
-      {
-        type: "pie", // 饼图
-        center: ["65%", 60],
-        radius: 35,
-        encode: { itemName: 3, value: 4 },
-      },
-    ],
-  };
-  chart.setOption(option);
+  });
 </script>
 <!-- echarts 绘图流程 -->
 <!-- 1.引入 js 库 -->
