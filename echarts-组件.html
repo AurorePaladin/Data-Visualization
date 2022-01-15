@@ -454,6 +454,11 @@
     yAxis: {},
     legend: {
       data: ["分类", "折线图", "柱状图"],
+      icon: "circle", // 设置图形为圆
+      textStyle: {
+        color: "red", // 设置文本为红色
+      },
+      left: 300,
     },
     dataset: {
       source: [
@@ -463,6 +468,25 @@
         ["四季度", 72, 123, "分类4", 70],
       ],
     },
+    toolbox: {
+      feature: {
+        // 以下3个属性，按照从上到下，在浏览器依次从左到右
+        dataZoom: {
+          // 区域缩放与区域还原
+          yAxisIndex: false, // 官方提供的缩放坐标轴不存在问题
+        },
+        restore: {}, // 还原
+        saveAsImage: {}, // 保存为图片
+      },
+    },
+    dataZoom: [
+      // 自定义区域缩放
+      {
+        show: true,
+        start: 0, // 区域缩放起始
+        end: 100, // 区域缩放终止
+      },
+    ],
     series: [
       {
         name: "分类", // 绑定 legend
