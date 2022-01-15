@@ -461,15 +461,15 @@
         type: "pie",
         center: ["65%", 60],
         radius: 35,
-        encode: { itemName: 3, value: 4 },
+        encode: { itemName: 3, value: 4 }, // encode映射的是 dataset->source  3 是映射 source 中每个数组 index = 3 的值，4 同理
       },
       {
         type: "line",
-        encode: { x: 0, y: 2 },
+        encode: { x: 0, y: 2 }, // 0 是映射 source 中每个数组 index = 0 的值，2 同理
       },
       {
         type: "bar",
-        encode: { x: 0, y: 1 },
+        encode: { x: 0, y: 1 }, // 0 是映射 source 中每个数组 index = 0 的值，1 同理
       },
     ],
   });
