@@ -1,14 +1,28 @@
 <template>
-  <div class="top-view">
+  <div class="map-view">
     这是MapView
-      <el-col :span="6">
+      <el-row>
+    <el-col :span="6">
         <el-card shadow="hover">
+          1
         </el-card>
       </el-col>
       <el-col :span="6">
         <el-card shadow="hover">
+          2
         </el-card>
       </el-col>
+      <el-col :span="6">
+        <el-card shadow="hover">
+          3
+        </el-card>
+      </el-col>
+      <el-col :span="6">
+        <el-card shadow="hover">
+          4
+        </el-card>
+      </el-col>
+    </el-row>
   </div>
 </template>
 
