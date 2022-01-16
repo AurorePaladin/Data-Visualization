@@ -1,7 +1,7 @@
 <template>
   <div class="bottom-view">
     这是BottomView
-     <el-row>
+     <el-row :gutter="20">
     <el-col :span="6">
         <el-card shadow="hover">
           1

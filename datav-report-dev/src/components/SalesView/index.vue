@@ -1,7 +1,7 @@
 <template>
   <div class="sales-view">
     这是SalesView
-  <el-row>
+  <el-row :gutter="20">
     <el-col :span="6">
         <el-card shadow="hover">
           1
