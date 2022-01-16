@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Echarts-坐标系</title>
+    <title>Echarts-多坐标系</title>
     <script src="https://cdn.jsdelivr.net/npm/echarts@4.7.0/dist/echarts.min.js"></script>
     <style>
       #chart {
@@ -21,21 +21,33 @@
   const chartDom = document.getElementById("chart");
   const chart = echarts.init(chartDom);
   const option = {
-    xAxis: {},
-    yAxis: {},
+    xAxis: {
+      type: "category", // 这是一个分类坐标系，需要指定 type: "category" 属性
+    },
+    yAxis: [{}, {}],
     dataset: {
       source: [
-        [13, 44],
-        [51, 51],
-        [51, 32],
-        [67, 19],
-        [19, 33],
+        // [13, 44],
+        // [51, 51],
+        // [51, 32],
+        // [67, 19],
+        // [19, 33],
+        ["product", "2012", "2013", "2014", "2015"],
+        ["Matcha Latte", 41.1, 30.4, 65.1, 53.3],
+        ["Milk Tea", 86.5, 92.1, 85.7, 83.1],
       ],
     },
     series: [
+      //   {
+      //     type: "scatter", // 散点图
+      //     encode: { x: 0, y: 1 },
+      //   },
+      { type: "bar", seriesLayoutBy: "row", yAxisIndex: 0 }, // yAxisIndex: 0 对应的是source第一个数据
+      { type: "line", seriesLayoutBy: "row", yAxisIndex: 1 }, // yAxisIndex: 0 对应的是source第二个数据
       {
-        type: "scatter", // 散点图
-        encode: { x: 0, y: 1 },
+        type: "pie",
+        seriesLayoutBy: "row",
+        yAxisIndex: 2, // yAxisIndex: 0 对应的是source第三个数据
       },
     ],
   };
