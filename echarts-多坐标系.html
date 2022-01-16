@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Echarts-双坐标系</title>
+    <title>Echarts-多坐标系</title>
     <script src="https://cdn.jsdelivr.net/npm/echarts@4.7.0/dist/echarts.min.js"></script>
     <style>
       #chart {
@@ -21,15 +21,40 @@
   const chartDom = document.getElementById("chart");
   const chart = echarts.init(chartDom);
   const option = {
-    xAxis: {
-      type: "category", // 这是一个分类坐标系，需要指定 type: "category" 属性
-    },
+    xAxis: [
+      {
+        type: "category", // 这是一个分类坐标系，需要指定 type: "category" 属性
+        gridIndex: 0,
+      },
+      {
+        type: "category",
+        gridIndex: 1,
+      },
+    ],
     yAxis: [
-      {},
+      {
+        min: 0,
+        max: 100,
+        gridIndex: 0,
+      },
       {
         splitLine: {
-          show: false, // 消除第二个坐标系的Y轴辅线
+          show: false,
         },
+        gridIndex: 0,
+      },
+      {
+        min: 0,
+        max: 150,
+        gridIndex: 1,
+      },
+    ],
+    grid: [
+      {
+        bottom: "55%",
+      },
+      {
+        top: "55%",
       },
     ],
     dataset: {
@@ -49,8 +74,9 @@
       //     type: "scatter", // 散点图
       //     encode: { x: 0, y: 1 },
       //   },
-      { type: "bar", seriesLayoutBy: "row", yAxisIndex: 0 }, // yAxisIndex: 0 对应的是source第一个数据
-      { type: "line", seriesLayoutBy: "row", yAxisIndex: 1 }, // yAxisIndex: 0 对应的是source第二个数据
+      { type: "bar", seriesLayoutBy: "row", xAxisIndex: 0, yAxisIndex: 0 }, // yAxisIndex: 0 对应的是source第一个数据
+      { type: "line", seriesLayoutBy: "row", xAxisIndex: 0, yAxisIndex: 1 }, // yAxisIndex: 0 对应的是source第二个数据
+      { type: "bar", seriesLayoutBy: "row", xAxisIndex: 1, yAxisIndex: 2 }, // yAxisIndex: 0 对应的是source第三个数据
       //   {
       //     type: "pie",
       //     seriesLayoutBy: "row",
