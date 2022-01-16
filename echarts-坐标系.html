@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Echarts-坐标系</title>
+    <script src="https://cdn.jsdelivr.net/npm/echarts@4.7.0/dist/echarts.min.js"></script>
+    <style>
+      #chart {
+        width: 800px;
+        height: 400px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="chart"></div>
+  </body>
+</html>
+<script>
+  const chartDom = document.getElementById("chart");
+  const chart = echarts.init(chartDom);
+  const option = {
+    xAxis: {},
+    yAxis: {},
+    dataset: {
+      source: [
+        [13, 44],
+        [51, 51],
+        [51, 32],
+        [67, 19],
+        [19, 33],
+      ],
+    },
+    series: [
+      {
+        type: "scatter", // 散点图
+        encode: { x: 0, y: 1 },
+      },
+    ],
+  };
+  chart.setOption(option);
+</script>
+<!-- echarts 绘图流程 -->
+<!-- 1.引入 js 库 -->
+<!-- 2.编写渲染容器 DOM，添加 width 和 height 样式属性 -->
+<!-- 3.获取渲染 DOM 对象 -->
+<!-- 4.初始化 ECharts 对象 -->
+<!-- 5.编写 option 参数 -->
+<!-- 6.调用 setOption 完成渲染 -->
