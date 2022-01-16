@@ -24,7 +24,14 @@
     xAxis: {
       type: "category", // 这是一个分类坐标系，需要指定 type: "category" 属性
     },
-    yAxis: [{}, {}],
+    yAxis: [
+      {},
+      {
+        splitLine: {
+          show: false,
+        },
+      },
+    ],
     dataset: {
       source: [
         // [13, 44],
