@@ -1,9 +1,15 @@
 <template>
-    <div>今日用户</div>
+    <div>今日用户
+        <common-card></common-card>
+    </div>
 </template>
 
 <script>
-export default {}
+import commonCardMixin from '../../mixins/commonCardMixin'
+export default {
+    mixins: [commonCardMixin]
+}
 </script>
 
-<style lang=""></style>
+<style lang="">
+</style>

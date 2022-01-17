@@ -1,9 +1,13 @@
 <template>
-    <div>用户总数</div>
+    <div>总订单
+    <common-card></common-card>
+    </div>
 </template>
 
 <script>
+import commonCardMixin from '../../mixins/commonCardMixin'
 export default {
+    mixins: [commonCardMixin]
 }
 </script>
 

@@ -1,7 +1,7 @@
 import CommonCard from '../components/CommonCard'
 
 export default {
-    component: {
+    components: {
         CommonCard
     }
 }

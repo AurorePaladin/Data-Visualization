@@ -1,16 +1,22 @@
 <template>
     <div>
-        <div class="title">1</div>
-        <div class="value">2</div>
-        <div class="chart">3</div>
-        <div class="line">4</div>
-        <div class="total">5</div>
+        <div class="title">{{title}}</div>
+        <div class="value">{{value}}</div>
+        <div class="chart">
+            <slot></slot>
+        </div>
+        <div class="line" />
+        <div class="total">
+            <slot name="footer"></slot>
+        </div>
     </div>
 </template>
 
 <script>
 export default {
-    components: {
+    props: {
+        title: String,
+        value: String
     }
 }
 </script>
@@ -28,7 +34,8 @@ export default {
     }
     .chart {
         height: 50px;
-    }
+        background-color: red;
+    }q
     .line {
         margin: 10px 0;
         border-top: 1px solid #eee;
