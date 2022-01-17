@@ -15,4 +15,15 @@ export default {
 }
 </script>
 
-<style></style>
+<style>
+    .title {
+        font-size: 12px;
+        color: #999;
+    }
+    .value {
+        font-size: 25px;
+        color: #000;
+        margin-top: 5px;
+        letter-spacing: 1px;
+    }
+</style>
