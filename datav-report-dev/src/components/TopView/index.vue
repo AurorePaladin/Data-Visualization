@@ -9,17 +9,17 @@
       </el-col>
       <el-col :span="6">
         <el-card shadow="hover">
-          2
+           <total-sales />
         </el-card>
       </el-col>
       <el-col :span="6">
         <el-card shadow="hover">
-          3
+           <total-sales />
         </el-card>
       </el-col>
       <el-col :span="6">
         <el-card shadow="hover">
-          4
+          <total-sales />
         </el-card>
       </el-col>
     </el-row>
