@@ -1,10 +1,10 @@
 <template>
     <div>
-        <div class="title"></div>
-        <div class="value"></div>
-        <div class="chart"></div>
-        <div class="line"></div>
-        <div class="total"></div>
+        <div class="title">1</div>
+        <div class="value">2</div>
+        <div class="chart">3</div>
+        <div class="line">4</div>
+        <div class="total">5</div>
     </div>
 </template>
 
