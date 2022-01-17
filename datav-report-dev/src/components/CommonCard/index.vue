@@ -5,18 +5,21 @@
         <div class="chart">3</div>
         <div class="line">4</div>
         <div class="total">
-            <today-user />
+            <today-users />
+            <total-users />
             <total-orders/>
         </div>
     </div>
 </template>
 
 <script>
-import TodayUser from '../TodayUser'
+import TodayUsers from '../TodayUsers'
+import TotalUsers from '../TotalUsers'
 import TotalOrders from '../TotalOrders'
 export default {
     components: {
-        TodayUser,
+        TodayUsers,
+        TotalUsers,
         TotalOrders
     }
 }
