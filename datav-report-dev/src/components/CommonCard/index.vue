@@ -26,4 +26,15 @@ export default {
         margin-top: 5px;
         letter-spacing: 1px;
     }
+    .chart {
+        height: 50px;
+    }
+    .line {
+        margin: 10px 0;
+        border-top: 1px solid #eee;
+    }
+    .total {
+        font-size: 12px;
+        color: #666;
+    }
 </style>
