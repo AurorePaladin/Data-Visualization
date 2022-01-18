@@ -1,5 +1,5 @@
 <template>
-    <common-card title="累积订单量" value="￥ 2,157,420">
+    <common-card title="累积订单量" value="2,157,420">
     <template v-slot:wrapper>
         <div id="total-orders-chart" :style="{ width: '100%',height: '100%'}"></div>
     </template>
