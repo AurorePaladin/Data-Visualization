@@ -1,5 +1,5 @@
 <template>
-    <div>总订单
+    <div>累计订单
     <common-card></common-card>
     </div>
 </template>

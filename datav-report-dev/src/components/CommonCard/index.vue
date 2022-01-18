@@ -3,7 +3,7 @@
         <div class="title">{{title}}</div>
         <div class="value">{{value}}</div>
         <div class="chart">
-            <slot></slot>
+            <slot name="wrapper"></slot>
         </div>
         <div class="line" />
         <div class="total">
@@ -21,7 +21,7 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
     .title {
         font-size: 12px;
         color: #999;
@@ -34,14 +34,21 @@ export default {
     }
     .chart {
         height: 50px;
-        background-color: red;
     }q
     .line {
         margin: 10px 0;
-        border-top: 1px solid #eee;
+        border-bottom: 1px solid #000;
     }
     .total {
         font-size: 12px;
         color: #666;
+    }
+</style>
+
+<style lang="scss">
+    .emphasis {
+        margin-left: 5px;
+        color: #333;
+        font-weight: 700;
     }
 </style>
