@@ -31,16 +31,6 @@ export default {
             series: [{
                 type: 'bar',
                 data: [410, 82, 200, 334, 390, 330, 220, 150, 82, 200, 290, 134, 290, 330, 150],
-                // areaStyle: {
-                //     color: 'blue',
-                // },
-                // lineStyle: {
-                //     width: 0
-                // },
-                // itemStyle: {
-                //     opacity: 0
-                // },
-                // smooth: true
             }],
             grid: {
                 top: 0,

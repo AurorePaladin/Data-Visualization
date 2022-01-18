@@ -3,15 +3,15 @@
     <template v-slot:wrapper>
         <div class="compare-wrapper">
             <div class="compare">
-          <span>日同比</span>
-          <span class="emphasis">7.33%</span>
-          <div class="increase" />
-        </div>
-        <div class="compare">
-          <span>月同比</span>
-          <span class="emphasis">38.79%</span>
-          <div class="decrease" />
-        </div>
+            <span>日同比</span>
+            <span class="emphasis">7.33%</span>
+            <div class="increase" />
+            </div>
+            <div class="compare">
+            <span>月同比</span>
+            <span class="emphasis">38.79%</span>
+            <div class="decrease" />
+            </div>
         </div>
     </template>
     <template v-slot:footer>
