@@ -1,7 +1,8 @@
 <template>
   <div class="sales-view">
     这是SalesView
-  <el-row :gutter="20">
+    <v-chart :options="data" :style="{ width: '100%',height: '100%'}"/>
+  <!-- <el-row :gutter="20">
     <el-col :span="6">
         <el-card shadow="hover">
           1
@@ -22,14 +23,26 @@
           4
         </el-card>
       </el-col>
-    </el-row>
+    </el-row> -->
   </div>
 </template>
 
 <script>
 
 export default {
-  components: {
+  data() {
+      return {
+        data: {
+          xAxis: {
+            type: 'category'
+          },
+          yAxis: {},
+          series: [{
+            type: 'line',
+            data: [100, 200, 300, 400]
+          }]
+        }
+     }
   }
 }
 </script>
