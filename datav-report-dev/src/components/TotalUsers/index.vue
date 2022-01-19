@@ -32,7 +32,15 @@ export default {
             },
             series: [{
                 type: 'bar',
+                stack: ['总量'],
                 data: [200],
+                barWidth: 10,
+            },
+            {
+                type: 'bar',
+                stack: ['总量'],
+                data: [250],
+                barWidth: 10,
             }],
             grid: {
                 top: 0,
