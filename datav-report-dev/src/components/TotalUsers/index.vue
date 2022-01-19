@@ -26,21 +26,29 @@ export default {
         chart.setOption({
             xAxis: {
                 type: 'value',
+                show: false,
             },
             yAxis: {
                 type: 'category',
+                show: false,
             },
             series: [{
                 type: 'bar',
-                stack: ['总量'],
-                data: [200],
+                stack: '总量',
+                data: [350],
                 barWidth: 10,
+                itemStyle: {
+                    color: '#45c946'
+                },
             },
             {
                 type: 'bar',
-                stack: ['总量'],
-                data: [250],
+                stack: '总量',
+                data: [200],
                 barWidth: 10,
+                itemStyle: {
+                    color: '#eee'
+                },
             }],
             grid: {
                 top: 0,
