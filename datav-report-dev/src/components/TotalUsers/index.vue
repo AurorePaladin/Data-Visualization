@@ -24,19 +24,15 @@ export default {
         const chartDom = document.getElementById('total-users-chart')
         const chart = this.$echarts.init(chartDom)
         chart.setOption({
-            color: ['#3398DB'],
             xAxis: {
-                type: 'category',
-                data: ['00:00', '01:00', '02:00', '03:00', '04:00', '05:00', '06:00', '07:00', '08:00', '09:00', '10:00', '11:00', '12:00', '13:00'],
-                show: false,
-                barWidth: '60%'
+                type: 'value',
             },
             yAxis: {
-                show: false,
+                type: 'category',
             },
             series: [{
                 type: 'bar',
-                data: [410, 82, 200, 334, 390, 330, 220, 150, 82, 200, 290, 134, 290, 330, 150],
+                data: [200],
             }],
             grid: {
                 top: 0,
