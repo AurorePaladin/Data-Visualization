@@ -483,25 +483,25 @@
       // 自定义区域缩放条
       {
         show: true,
-        start: 0, // 区域缩放起始
-        end: 100, // 区域缩放终止
+        start: 2, // 区域缩放起始
+        end: 95, // 区域缩放终止
       },
     ],
     series: [
       {
-        name: "分类", // 绑定 legend
+        name: "分类", // 绑定 legend 里的元素
         type: "pie",
         center: ["65%", 60],
         radius: 35,
         encode: { itemName: 3, value: 4 }, // encode映射的是 dataset->source  3 是映射 source 中每个数组 index = 3 的值，4 同理
       },
       {
-        name: "折线图", // 绑定 legend
+        name: "折线图", // 绑定 legend 里的元素
         type: "line",
         encode: { x: 0, y: 2 }, // 0 是映射 source 中每个数组 index = 0 的值，2 同理
       },
       {
-        name: "柱状图", // 绑定 legend
+        name: "柱状图", // 绑定 legend 里的元素
         type: "bar",
         encode: { x: 0, y: 1 }, // 0 是映射 source 中每个数组 index = 0 的值，1 同理
       },

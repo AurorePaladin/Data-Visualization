@@ -1,19 +1,19 @@
 <template>
     <common-card title="累计用户数" value="1,087,503">
-    <template v-slot:wrapper>
-        <!-- <div id="total-users-chart" :style="{ width: '100%',height: '100%'}"></div> -->
-        <v-chart :option="getOptions()" />
-    </template>
-    <template v-slot:footer>
-        <div class="total-users-footer">
-            <span>日同比</span>
-            <span class="emphasis">8.73%</span>
-            <div class="increase" />
-            <span class="month">月同比</span>
-            <span class="emphasis">35.91%</span>
-            <div class="decrease" />
-        </div>
-    </template>
+        <template v-slot:wrapper>
+            <!-- <div id="total-users-chart" :style="{ width: '100%',height: '100%'}"></div> -->
+            <v-chart :option="getOptions()" />
+        </template>
+        <template v-slot:footer>
+            <div class="total-users-footer">
+                <span>日同比</span>
+                <span class="emphasis">8.73%</span>
+                <div class="increase" />
+                <span class="month">月同比</span>
+                <span class="emphasis">35.91%</span>
+                <div class="decrease" />
+            </div>
+        </template>
     </common-card>
 </template>
 
@@ -26,7 +26,7 @@ export default {
             return {
                 xAxis: {
                 type: 'value',
-                show: false,
+                show: false, // 是否展示X轴的辅助线
                 },
                 yAxis: {
                     type: 'category',
@@ -35,33 +35,34 @@ export default {
                 series: [{
                     type: 'bar',
                     stack: '总量',
-                    data: [200],
+                    data: [150],
                     barWidth: 10,
                     itemStyle: {
-                        color: '#45c946'
+                        color: 'green'
                     },
                 },
                 {
                     type: 'bar',
                     stack: '总量',
-                    data: [250],
+                    data: [200],
                     barWidth: 10,
                     itemStyle: {
-                        color: '#eee'
+                        color: 'red'
                     },
                 },
                 {
                     type: 'custom',
                     stack: '总量',
-                    data: [200],
+                    data: [150],
                     renderItem: (params, api) => {
-                        // console.log(params, api);
+                        // console.log('params', params, api)
                         const value = api.value(0)
                         const endPoint = api.coord([value, 0])
-                        console.log(endPoint)
+                        console.log('value:', value)
+                        console.log('endPoint:', endPoint)
                         return {
                             type: 'group',
-                            positions: endPoint,
+                            // positions: endPoint, ????
                             children: [{
                                 type: 'path',
                                 position: endPoint,

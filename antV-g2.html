@@ -26,6 +26,7 @@
   ];
   const chartDom = document.getElementById("g2-chart");
   const line = new Line(chartDom, {
+    // todo title和折线图描述未展示
     title: {
       visible: true,
       text: "g2折线图",
@@ -40,9 +41,9 @@
     point: {
       visible: true, // 点
       size: 5,
-      color: "gold",
+      color: "red",
       style: {
-        stroke: "pink",
+        stroke: "black",
         lineWidth: 2,
         fillOpacity: 0.7,
       },
@@ -70,7 +71,7 @@
         type: "text",
         position: ["min", "median"],
         content: "辅助标记",
-        offsetY: -4,
+        offsetY: -4, // 文本偏移量
         style: {
           textBaseline: "bottom",
         },
@@ -81,7 +82,7 @@
         end: ["max", "median"],
         style: {
           stroke: "red",
-          lineDash: [2, 2],
+          lineDash: [4, 10], // 4表示线段长，10表示线段间距
         },
       },
     ],

@@ -464,7 +464,7 @@
         encode: { itemName: 3, value: 4 }, // encode映射的是 dataset->source  3 是映射 source 中每个数组 index = 3 的值，4 同理
       },
       {
-        type: "line",
+        type: "line", // 1. 当 type: 为 line 或 bar, 并且有设置 data 时, xAxis 和 yAxis 必须配置，哪怕为 {} 2. 当没有 data 时候，xAxis 必须设置 type: "category" 属性
         encode: { x: 0, y: 2 }, // 0 是映射 source 中每个数组 index = 0 的值，2 同理
       },
       {

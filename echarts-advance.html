@@ -451,7 +451,7 @@
     series: [
       {
         type: "pie",
-        center: ["65%", 60],
+        center: ["65%", 60], // 圆心 第一个参数是圆心的X轴坐标，第二个参数是圆心的Y轴坐标
         radius: 35,
         data: [
           {
@@ -473,7 +473,7 @@
         ],
       },
       {
-        type: "line",
+        type: "line", // 当 type: 为 line 或 bar, 并且有设置 data 时, xAxis 和 yAxis 必须配置，哪怕为 {}
         data: [100, 112, 96, 123],
       },
       {

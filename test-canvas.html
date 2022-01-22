@@ -7,16 +7,16 @@
     <title>Canvas</title>
   </head>
   <body>
-    <canvas id="canvas" width="600" height="600"></canvas>
+    <canvas id="canvas123" width="600" height="600"></canvas>
   </body>
 </html>
 <script>
-  const canvas = document.getElementById("canvas");
+  const canvas = document.getElementById("canvas123");
   const ctx = canvas.getContext("2d"); // 获取 canvas 对象
   ctx.fillStyle = "black"; // 修改填充色为红色
   ctx.fillRect(0, 0, 60, 60); // 绘制矩形
-  ctx.beginPath();
-  ctx.lineWidth = 2; // 线条宽度
+  ctx.beginPath(); // 效果约等于换行
+  ctx.lineWidth = 3; // 线条宽度
   ctx.strokeStyle = "blue"; // 线条填充色
   ctx.moveTo(100, 100); // 起点坐标
   ctx.lineTo(250, 75); // 中间点坐标
@@ -25,11 +25,11 @@
 
   //  绘制曲线
   ctx.beginPath();
-  ctx.lineWidth = 2; // 线条宽度
+  ctx.lineWidth = 10; // 线条宽度
   ctx.strokeStyle = "yellow"; // 线条填充色
-  ctx.fillStyle = "green";
-  ctx.arc(200, 200, 50, 0, 2 * Math.PI); // 绘制圆形  （圆心X轴，圆心Y轴， 半径， 起始角度， 终止角度 ）
+  ctx.arc(200, 200, 50, 0, Math.PI); // 绘制圆形  （1.圆心X轴，圆心Y轴， 半径， 起始角度， 终止角度)    2.顺时针方向，0就是3点钟方向
   ctx.stroke();
+  ctx.fillStyle = "green";
   ctx.fill();
 </script>
 

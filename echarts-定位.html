@@ -490,9 +490,12 @@
     grid: [
       {
         // 自定义缩放条 位置属性 可用string的方式使用百分比。
+        // left right 影响的是整个图表的缩放
         left: "10%",
-        top: 100,
         right: "10%",
+
+        // top 和 bottom  影响的是 bar 和 line 在图表上下的  类似margin-top/bottom
+        top: 100,
         bottom: 100,
       },
     ],

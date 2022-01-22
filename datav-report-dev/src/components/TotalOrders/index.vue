@@ -30,14 +30,19 @@ export default {
                     type: 'line',
                     data: [620, 432, 220, 534, 790, 430, 220, 320, 532, 320, 834, 690, 530, 220, 620],
                     areaStyle: {
+                        // 去掉 coLor 默认填充天蓝色
+                        // 去掉 areaStyle 无填充色
                         color: 'purple',
                     },
                     lineStyle: {
-                        width: 0
+                        width: 2,
+                        color: 'red',
                     },
                     itemStyle: {
-                        opacity: 0
+                        // 点的透明度
+                        opacity: 0.5,
                     },
+                    // 折线图平滑
                     smooth: true
                 }],
                 grid: {

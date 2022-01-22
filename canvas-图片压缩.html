@@ -9,58 +9,59 @@
   <body>
     <input type="file" id="upload" />
   </body>
-</html>
-<script>
-  const upload = document.getElementById("upload");
-  const ACCEPT = ["image/jpg", "image/jpg", "image/jpeg"];
-  const MAXSIZE = 3 * 1024 * 1024;
-  const MAXSIZE_STR = "3MB";
-  function convertImageToBase64(file, callback) {
-    let reader = new FileReader(); // 实例化 fileReader 对象，读取文件类容
-    reader.addEventListener("load", function (e) {
-      // console.log(e.target.result);
-      // console.log(reader.result);
-      const base64Image = e.target.result;
-      callback && callback(base64Image);
-      reader = null; //回收 reader 对象的内存
-    });
-    reader.readAsDataURL(file); // 浏览器提供的 blob 对象， 标记文件
-  }
-  function compress(base64Image, callback) {
-    //   console.log(base64Image);
-    const image = new Image();
-    let maxW = 1024;
-    let maxH = 1024;
-    image.addEventListener("load", function (e) {
+  <script>
+    function convertImageToBase64(file, callback) {
+      let reader = new FileReader(); // 实例化 fileReader 对象，读取文件类容
+      reader.addEventListener("load", function (e) {
+        // console.log(e.target.result);
+        console.log(e);
+        const base64Image = e.target.result;
+        callback && callback(base64Image);
+        reader = null; //回收 reader 对象的内存
+      });
+      // 浏览器提供的 blob 对象， 标记文件  readAsDataURL的用法 https://developer.mozilla.org/zh-CN/docs/Web/API/FileReader/readAsDataURL
+      reader.readAsDataURL(file);
+    }
+
+    /**
+     * 压缩原图
+     * 1. 计算图片的压缩比
+     * 2. 添加 canvas 标签以压缩后的尺寸来展示图片
+     * 3. toDataURL 方法压缩图片
+     * 4. 移除 canvas
+     * 5. 展示压缩后的图片
+     * 6. 通知外部图片压缩完成
+     **/
+    function compressImage(image, callback) {
+      let originWidth = image.naturalWidth;
+      let originHeight = image.naturalHeight;
+      let originBase64Image = image.src;
+      let maxW = 1024;
+      let maxH = 1024;
       let ratio; // 图片的压缩比
       let needCompress = false; // 是否需要压缩
-      console.log(image.naturalWidth, image.naturalHeight);
       // 处理图片的宽高
-      if (maxW < image.naturalWidth) {
+      if (maxW < originWidth) {
         needCompress = true;
-        ratio = image.naturalWidth / maxW;
-        console.log(ratio);
-        maxH = image.naturalHeight / ratio;
-        console.log(maxH);
+        ratio = originWidth / maxW;
+        maxH = originHeight / ratio;
       }
-      if (maxH < image.naturalHeight) {
+      if (maxH < originHeight) {
         needCompress = true;
-        ratio = image.naturalHeight / maxH;
-        console.log(ratio);
-        maxW = image.naturalWidth / ratio;
-        console.log(maxW);
+        ratio = originHeight / maxH;
+        maxW = originWidth / ratio;
       }
       // 如果不需要压缩，获取图片的实际尺寸
       if (!needCompress) {
-        maxW = naturalWidth;
-        maxH = naturalHeight;
+        maxW = originWidth;
+        maxH = originHeight;
       }
-      // 绘制 canvas 画布，画布的大小为图片压缩后的尺寸
+
+      // 添加 canvas 标签来绘制原图（用于压缩图片宽高和大小），画布的大小为图片压缩后的尺寸
       const canvas = document.createElement("canvas");
       canvas.setAttribute("id", "__compress__");
       canvas.width = maxW;
       canvas.height = maxH;
-      canvas.style.visibility = "visible";
       document.body.appendChild(canvas);
 
       const ctx = canvas.getContext("2d");
@@ -69,45 +70,70 @@
       // 绘制图片
       ctx.drawImage(image, 0, 0, maxW, maxH);
 
-      // 绘制压缩后的图片
-      const compressImage = canvas.toDataURL("imagee/jpeg", 0.8); // toDataURL第二个参数是压缩度，数字越小越失帧
-      callback && callback(compressImage);
-      const _image = new Image();
-      _image.src = compressImage;
-      document.body.appendChild(_image);
+      // 将 canvas 转换为图片的 base64 编码格式
+      const compressedBase64Image = canvas.toDataURL("imagee/jpeg", 0.8); // toDataURL第二个参数是压缩度，数字越小越失帧
+
+      // 移除 canvas
       canvas.remove();
-      console.log("压缩比：" + image.src.length / _image.src.length);
+
+      // 展示压缩后的图片
+      const compressedImage = new Image();
+      compressedImage.src = compressedBase64Image;
+      document.body.appendChild(compressedImage);
+
+      console.log(
+        "压缩比：" + originBase64Image.length / compressedBase64Image.length
+      );
+      callback && callback(compressedBase64Image);
+    }
+
+    function uploadToServer(compressImage) {
+      console.log("上传至服务器");
+    }
+
+    // 监听文件选择
+    const upload = document.getElementById("upload");
+
+    upload.addEventListener("change", function (e) {
+      console.log("选择的文件为:", e.target.files);
+      // 图片是否存在
+      const [file] = e.target.files;
+      if (!file) {
+        return;
+      }
+      const { type: fileType, size: fileSize } = file;
+
+      const ACCEPT = ["image/jpg", "image/png", "image/jpeg"];
+      // const ACCEPT = ["image/jpg", "image/jpeg"];
+      const MAXSIZE = 3 * 1024 * 1024;
+      const MAXSIZE_STR = "3MB";
+
+      // 图片类型检查
+      // indexOf()用法：如果包含返回的是在该数组中的索引值，不包含返回-1
+      // if (ACCEPT.indexOf(fileType) === -1) {
+      // 1.includes()的用法 如果包含返回的是true，不包含返回false 2.如果只是判断是否包含，优先用includes
+      if (!ACCEPT.includes(fileType)) {
+        alert(`不支持[${fileType}]文件类型`);
+        upload.value = "";
+        return;
+      }
+      // 图片大小检查
+      if (fileSize > MAXSIZE) {
+        alert(`文件超出${MAXSIZE_STR}`);
+        upload.value = "";
+        return;
+      }
+      // 将图片转换为 Base64 编码格式
+      convertImageToBase64(file, (base64Image) => {
+        // 转换为 Base64 格式后展示原图到界面上
+        const image = new Image();
+        image.src = base64Image;
+        image.addEventListener("load", (e) => {
+          // 监听到原图加载完成后，压缩原图
+          compressImage(image, uploadToServer);
+        });
+        document.body.appendChild(image);
+      });
     });
-    image.src = base64Image;
-    document.body.appendChild(image);
-  }
-
-  function uploadToServer(compressImage) {
-    console.log("上传至服务器");
-  }
-
-  upload.addEventListener("change", function (e) {
-    // console.log(e.target.files);
-    // 图片是否存在
-    const [file] = e.target.files;
-    if (!file) {
-      return;
-    }
-    // 图片大小检查
-    const { type: fileType, size: fileSize } = file;
-    if (ACCEPT.includes(fileType < 0)) {
-      alert(`不支持[${fileType}]文件类型`);
-      return;
-    }
-    // 图片大小检查
-    if (fileSize > MAXSIZE) {
-      alert(`文件超出${MAXSIZE_STR}`);
-      upload.value = "";
-      return;
-    }
-    // 图片压缩
-    convertImageToBase64(file, (base64Image) =>
-      compress(base64Image, uploadToServer)
-    );
-  });
-</script>
+  </script>
+</html>

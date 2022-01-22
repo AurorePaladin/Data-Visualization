@@ -15,14 +15,15 @@
   const zr = zrender.init(document.getElementById("container"));
   const rect = new zrender.Rect({
     shape: {
-      x: 0,
-      y: 0,
+      x: 20,
+      y: 20,
       width: 50,
       height: 50,
     },
     style: {
       fill: "red",
-      lineWidth: 0,
+      lineWidth: 5,
+      stroke: "blue",
     },
   });
   const line1 = new zrender.Polyline({
@@ -31,6 +32,18 @@
         [100, 100],
         [250, 75],
         [300, 100],
+      ],
+    },
+    style: {
+      stroke: "gold",
+      lineWidth: 1,
+    },
+  });
+  const line2 = new zrender.Polyline({
+    shape: {
+      points: [
+        [300, 100],
+        [400, 200],
       ],
     },
     style: {
@@ -58,12 +71,13 @@
       ],
     },
     style: {
-      stroke: "black",
+      stroke: "red",
       lineWidth: 1,
     },
   });
   zr.add(rect);
   zr.add(line1);
+  zr.add(line2);
   zr.add(circle);
   zr.add(point1);
 </script>
