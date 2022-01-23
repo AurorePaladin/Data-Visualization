@@ -3,6 +3,7 @@
     这是BottomView
      <el-row :gutter="20">
     <el-col :span="6">
+      <!-- shadow="hover" 鼠标悬浮时显示阴影-->
         <el-card shadow="hover">
           1
         </el-card>
