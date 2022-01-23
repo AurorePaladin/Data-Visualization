@@ -28,6 +28,8 @@
                 start-placeholder="开始日期"
                 end-placeholder="结束日期"
                 :picker-options="pickerOptions"
+                class="sales-view-date-picker"
+                unlink-panels
               />
             </div>
           </div>
@@ -76,7 +78,6 @@ export default {
   methods: {
     onMenuSelect(index){
         this.activeIndex = index
-        console.log(this.activeIndex);
     }
   },
   components: {
@@ -119,5 +120,8 @@ export default {
   .menu-wrapper {
     display: flex;
   }
+}
+.sales-view-date-picker {
+  margin-left: 20px;
 }
 </style>
