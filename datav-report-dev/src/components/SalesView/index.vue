@@ -123,7 +123,69 @@ export default {
   methods: {
     onMenuSelect(index){
         this.activeIndex = index
-    }
+        if (index === '1') {
+          this.render(this.orderFullYear, this.orderFullYearAxis, '年度销售额')
+        } else {
+          this.render(this.userFullYear, this.userFullYearAxis, '年度用户访问量')
+        }
+    },
+    render(data, axis, title) {
+        this.chartOption = {
+          title: {
+            text: title,
+            textStyle: {
+              fontSize: 12,
+              color: '#666'
+            },
+            left: 25,
+            top: 20
+          },
+          xAxis: {
+            type: 'category',
+            data: axis,
+            axisTick: {
+              alignWithLabel: true,
+              lineStyle: {
+                color: '#999'
+              }
+            },
+            axisLine: {
+              lineStyle: {
+                color: '#999'
+              }
+            },
+            axisLabel: {
+              color: '#333'
+            }
+          },
+          yAxis: {
+            axisLine: {
+              show: false
+            },
+            axisTick: {
+              show: false
+            },
+            splitLine: {
+              lineStyle: {
+                type: 'dotted',
+                color: '#eee'
+              }
+            }
+          },
+          series: [{
+            type: 'bar',
+            barWidth: '35%',
+            data
+          }],
+          color: ['#3398DB'],
+          grid: {
+            top: 70,
+            left: 60,
+            right: 60,
+            bottom: 50
+          }
+        }
+      }
   },
   components: {
   },
