@@ -9,7 +9,7 @@
       <el-card shadow="hover">
         <template v-slot:header>
           <div class="menu-wrapper">
-            <el-menu :default-active="activeIndex" mode="horizontal" @select="onMenuSelect">
+            <el-menu :default-active="activeIndex" mode="horizontal" @select="onMenuSelect" class="sales-view-menu">
               <el-menu-item index="1">销售额</el-menu-item>
               <el-menu-item index="2">访问量</el-menu-item>
             </el-menu>
@@ -119,9 +119,29 @@ export default {
   margin-top: 20px;
   .menu-wrapper {
     display: flex;
+    .sales-view-menu {
+        width: 100%;
+        padding-left: 20px;
+
+        .el-menu-item {
+          height: 50px;
+          line-height: 50px;
+          margin: 0 20px;
+        }
+    }
   }
-}
-.sales-view-date-picker {
-  margin-left: 20px;
+   .menu-right {
+        position: absolute;
+        top: 0;
+        right: 20px;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+
+        .sales-view-date-picker {
+          margin-left: 20px;
+        }
+    }
 }
 </style>
