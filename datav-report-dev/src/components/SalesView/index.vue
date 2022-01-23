@@ -96,6 +96,18 @@ export default {
           data:['1月', '2月', '3月','4月', '5月', '6月', '7月', '8月', '9月','10月', '11月', '12月']
         },
         yAxis: {
+          axisLine: {
+              show: false
+            },
+            axisTick: {
+              show: false
+            },
+            splitLine: {
+              lineStyle: {
+                type: 'dotted',
+                color: '#eee'
+              }
+            }
         },
         series: [{
           type: 'bar',
@@ -157,63 +169,6 @@ export default {
           this.render(this.userFullYear, this.userFullYearAxis, '年度用户访问量')
         }
     },
-    render(data, axis, title) {
-        this.chartOption = {
-          title: {
-            text: title,
-            textStyle: {
-              fontSize: 12,
-              color: '#666'
-            },
-            left: 25,
-            top: 20
-          },
-          xAxis: {
-            type: 'category',
-            data: axis,
-            axisTick: {
-              alignWithLabel: true,
-              lineStyle: {
-                color: '#999'
-              }
-            },
-            axisLine: {
-              lineStyle: {
-                color: '#999'
-              }
-            },
-            axisLabel: {
-              color: '#333'
-            }
-          },
-          yAxis: {
-            axisLine: {
-              show: false
-            },
-            axisTick: {
-              show: false
-            },
-            splitLine: {
-              lineStyle: {
-                type: 'dotted',
-                color: '#eee'
-              }
-            }
-          },
-          series: [{
-            type: 'bar',
-            barWidth: '35%',
-            data
-          }],
-          color: ['#3398DB'],
-          grid: {
-            top: 70,
-            left: 60,
-            right: 60,
-            bottom: 50
-          }
-        }
-      }
   },
   components: {
   },
