@@ -83,7 +83,35 @@ export default {
             }}
         ]
       },
-      chartOption: {},
+      chartOption: {
+        title:{
+          text: '年度销售额',
+          textStyle: {
+            fontSize: 12,
+            color: '#666'
+          }
+        },
+        xAxis: {
+          type: 'category',
+          data:['1月', '2月', '3月','4月', '5月', '6月', '7月', '8月', '9月','10月', '11月', '12月']
+        },
+        yAxis: {
+        },
+        series: [{
+          type: 'bar',
+          barWidth: '35%',
+          data: [
+              200, 250, 300, 350, 300, 250, 200, 250, 300, 350, 300, 250
+            ],
+          color: ['blue']
+        }],
+        grid:{
+          top: 70,
+          right: 60,
+          bottom: 50,
+          left: 60,
+        }
+      },
       rankData: [
         {
           no: 1,
