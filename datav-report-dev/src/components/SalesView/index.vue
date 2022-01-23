@@ -100,7 +100,7 @@ export default {
               show: false
             },
             axisTick: {
-              show: false
+              show: false // 辅助线【刻度】关闭
             },
             splitLine: {
               lineStyle: {
@@ -164,9 +164,9 @@ export default {
     onMenuSelect(index){
         this.activeIndex = index
         if (index === '1') {
-          this.render(this.orderFullYear, this.orderFullYearAxis, '年度销售额')
+          // this.render(this.orderFullYear, this.orderFullYearAxis, '年度销售额')
         } else {
-          this.render(this.userFullYear, this.userFullYearAxis, '年度用户访问量')
+          // this.render(this.userFullYear, this.userFullYearAxis, '年度用户访问量')
         }
     },
   },
