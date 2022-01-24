@@ -29,7 +29,13 @@
                 <el-table-column prop="users" label="搜索用户数" />
                 <el-table-column prop="range" label="搜索占比" />
               </el-table>
-              <el-pagination />
+              <el-pagination
+                layout="prev, pager, next"
+                :total="100"
+                :page-size="4"
+                background
+                @current-change="onPageChange"
+              />
           </div>
           <div class="view">
       <el-card shadow="hover">
@@ -91,6 +97,11 @@ export default {
       ],
       radioSelect: '品类',
       categoryOption: {}
+    }
+  },
+  methods: {
+    onPageChange(page) {
+      console.log(page)
     }
   }
 }
