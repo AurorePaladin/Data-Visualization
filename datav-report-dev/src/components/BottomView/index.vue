@@ -27,6 +27,23 @@
               </el-table>
               <el-pagination />
           </div>
+          <div class="view">
+      <el-card shadow="hover">
+        <template v-slot:header>
+          <div class="title-wrapper">
+            <div class="title">分类销售排行</div>
+            <div class="radio-wrapper">
+              <el-radio-group v-model="radioSelect" size="small" @change="onCategoryChange">
+                <el-radio-button label="品类"></el-radio-button>
+                <el-radio-button label="商品"></el-radio-button>
+              </el-radio-group>
+            </div>
+          </div>
+        </template>
+         <template>
+          <div class="chart-wrapper">
+            <v-chart :options="categoryOption" />
+          </div>
         </template>
       </el-card>
     </div>
@@ -40,10 +57,21 @@ export default {
     return {
       searchUserOption: {},
       searchNumberOption: {},
+      tableData: {},
+      radioSelect: '品类',
+      categoryOption: {}
     }
   }
 }
 </script>
 
 <style lang="scss" scoped>
+.bottom-view {
+    display: flex;
+    margin-top: 20px;
+
+    .view {
+      flex: 1;
+    }
+}
 </style>
