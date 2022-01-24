@@ -21,6 +21,12 @@
               </div>
             </div>
           </div>
+          <div class="table-wrapper">
+             <el-table :data="tableData">
+                <el-table-column />
+              </el-table>
+              <el-pagination />
+          </div>
         </template>
       </el-card>
     </div>
@@ -30,7 +36,11 @@
 <script>
 
 export default {
-  components: {
+  data() {
+    return {
+      searchUserOption: {},
+      searchNumberOption: {},
+    }
   }
 }
 </script>
