@@ -1,29 +1,29 @@
 <template>
   <div class="bottom-view">
     这是BottomView
-     <el-row :gutter="20">
-    <el-col :span="6">
-      <!-- shadow="hover" 鼠标悬浮时显示阴影-->
-        <el-card shadow="hover">
-          1
-        </el-card>
-      </el-col>
-      <el-col :span="6">
-        <el-card shadow="hover">
-          2
-        </el-card>
-      </el-col>
-      <el-col :span="6">
-        <el-card shadow="hover">
-          3
-        </el-card>
-      </el-col>
-      <el-col :span="6">
-        <el-card shadow="hover">
-          4
-        </el-card>
-      </el-col>
-    </el-row>
+     <div class="view">
+      <el-card shadow="hover">
+        <template v-slot:header>
+          <div class="title-wrapper">关键词搜索</div>
+        </template>
+        <template>
+          <div class="chart-wrapper">
+            <div class="chart-inner">
+              <div class="chart">
+                <div class="chart-title">搜索用户数</div>
+                <div class="chart-data">93634</div>
+                <v-chart :options="searchUserOption" />
+              </div>
+              <div class="chart">
+                <div class="chart-title">搜索量</div>
+                <div class="chart-data">198782</div>
+                <v-chart :options="searchNumberOption" />
+              </div>
+            </div>
+          </div>
+        </template>
+      </el-card>
+    </div>
   </div>
 </template>
 
