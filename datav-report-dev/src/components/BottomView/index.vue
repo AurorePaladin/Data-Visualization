@@ -72,7 +72,15 @@ export default {
 
     .view {
       flex: 1;
-      
+
+      &:first-child {
+        padding: 0 10px 0 0;
+      }
+
+      &:last-child {
+        padding: 0 0 0 10px;
+      }
+
       .title-wrapper {
         display: flex;
         align-items: center;
@@ -90,6 +98,50 @@ export default {
           justify-content: flex-end;
           padding-right: 20px;
         }
+      .chart-wrapper {
+        display: flex;
+        flex-direction: column;
+        height: 452px;
+
+        .chart-inner {
+          display: flex;
+          padding: 0 10px;
+          margin-top: 20px;
+
+          .chart {
+            flex: 1;
+            padding: 0 10px;
+
+            .chart-title {
+              color: #999;
+              font-size: 14px;
+            }
+
+            .chart-data {
+              font-size: 22px;
+              color: #333;
+              font-weight: 500;
+              letter-spacing: 2px;
+            }
+
+            .echarts {
+              height: 50px;
+            }
+          }
+        }
+
+        .table-wrapper {
+          flex: 1;
+          margin-top: 20px;
+          padding: 0 20px 20px;
+
+          .el-pagination {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 15px;
+          }
+        }
+      }
     }
 }
 </style>
