@@ -21,7 +21,7 @@ export default {
                 xAxis: {
                     type: 'category',
                     show: false,
-                    boundaryGap: false
+                    boundaryGap: false // 消除X轴两侧边距
                 },
                 yAxis: {
                     show: false,
