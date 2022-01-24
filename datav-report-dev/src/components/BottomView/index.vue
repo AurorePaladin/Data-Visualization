@@ -17,7 +17,7 @@
               <div class="chart">
                 <div class="chart-title">搜索量</div>
                 <div class="chart-data">198782</div>
-                <v-chart :option="searchNumberOption" />
+                <v-chart :option="searchUserOption" />
               </div>
             </div>
           </div>
@@ -55,7 +55,29 @@
 export default {
   data() {
     return {
-      searchUserOption: {},
+      searchUserOption: {
+        xAxis: {
+          type: 'category',
+          boundaryGap: false // 消除X轴两侧边距
+        },
+        yAxis: {
+          show: false,
+        },
+        series: {
+          type: 'line',
+          data: [100, 150, 200, 250, 200, 150, 100, 50, 100, 150],
+          areaStyle: {
+            color: 'rgba(95,187,255,.5)' // 图表区域填充色
+          },
+          lineStyle: {
+            color: 'skyblue'
+          },
+          itemStyle: {
+            opacity: 0 // 点的透明度
+          },
+          smooth: true
+        }
+      },
       searchNumberOption: {},
       tableData: {},
       radioSelect: '品类',
