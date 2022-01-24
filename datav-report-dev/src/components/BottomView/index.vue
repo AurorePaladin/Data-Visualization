@@ -102,6 +102,23 @@ export default {
   methods: {
     onPageChange(page) {
       console.log(page)
+    },
+    renderPieChart() {
+      const mockData = [
+        {
+          legendname: '米粥',
+          value: 67,
+          percent: '15.48%'
+        },{
+          legendname: '蛋挞',
+          value: 97,
+          percent: '22.30%'
+        },{
+          legendname: '饼干',
+          value: 92,
+          percent: '21.15%'
+        },
+      ],
     }
   }
 }
