@@ -12,12 +12,12 @@
               <div class="chart">
                 <div class="chart-title">搜索用户数</div>
                 <div class="chart-data">93634</div>
-                <v-chart :options="searchUserOption" />
+                <v-chart :option="searchUserOption" />
               </div>
               <div class="chart">
                 <div class="chart-title">搜索量</div>
                 <div class="chart-data">198782</div>
-                <v-chart :options="searchNumberOption" />
+                <v-chart :option="searchNumberOption" />
               </div>
             </div>
           </div>
@@ -42,7 +42,7 @@
         </template>
          <template>
           <div class="chart-wrapper">
-            <v-chart :options="categoryOption" />
+            <v-chart :option="categoryOption" />
           </div>
         </template>
       </el-card>
