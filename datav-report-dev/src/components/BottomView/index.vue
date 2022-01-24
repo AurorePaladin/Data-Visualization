@@ -119,7 +119,36 @@ export default {
           percent: '21.15%'
         },
       ],
+      this.categoryOption = {
+        title: [{
+          text: '品类分布',
+          textStyle: {
+            fontSize: 14,
+            color: 'gray',
+          },
+          left: 20,
+          top: 20,
+        }],
+        series:[{
+          type: 'pie',
+          data: mockData,
+          label: {
+            normal: {
+              show: true,
+              position: 'outter', // legendname 在饼图里的显示位置
+              formatter: function(params) { // params 指代 mockData
+                return params.data.legendname
+              }
+            }
+          },
+          center: ['35%', '55%'], // 饼图圆心的 X Y坐标; % 是【画布的长和宽相比最小的的值，比如画布是 400*300 就以 300 为基准】，以下相同
+          radius: ['45%', '60%'], // 45%是内半径，60%是外半径，所以图表为 （外半径60% - 内半径45%） 的环状空心饼图
+        }]
+      }
     }
+  },
+  mounted() {
+    this.renderPieChart()
   }
 }
 </script>
