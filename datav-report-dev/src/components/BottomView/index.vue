@@ -111,21 +111,24 @@ export default {
           percent: '15.48%',
           itemStyle: { // 饼图块的颜色
             color: 'pink'
-          }
+          },
+          name: '米粥 | 15.48',
         },{
           legendname: '蛋挞',
           value: 97,
-          percent: '22.30%',
+          percent: '22.30',
           itemStyle: {
             color: 'purple'
-          }
+          },
+          name: '蛋挞 | 22.30%',
         },{
           legendname: '饼干',
           value: 92,
-          percent: '21.15%',
+          percent: '21.15',
           itemStyle: {
             color: 'blue'
-          }
+          },
+          name: '饼干 | 21.15%',
         },
       ],
       this.categoryOption = {
@@ -150,6 +153,7 @@ export default {
           textAlign: 'center',
         }],
         series:[{
+          name: '品类分布',
           type: 'pie',
           data: mockData,
           label: {
@@ -170,8 +174,30 @@ export default {
               smooth: true
             },
             clockwise: true, // 以12点钟方向为基准， true 为顺时针, false 为逆时针
+            itemStyle: { // 饼状块加边距，在浏览器里就会显示为白色间隔
+              borderWidth: 4,
+              borderColor: '#fff'
+            }
           },
-        }]
+        }],
+        lengend: {
+          type: 'scroll', // 滑动
+          orient: 'vertical', // 垂直排列
+          height: 250,
+          left: '70%',
+          top: 'middle',
+          textStyle: {
+            color: '#8c8c8c'
+          },
+          tooltip: { // 鼠标移上去显示的信息
+            trigger: 'item', // 默认属性，鼠标移上去就触发下面的 formatter()
+            formatter: function(params) {
+              const str = params.seriesName + '<br />' + params.marker + params.data.legendname + '<br />' + '数量：' + params.data.value + '<br />' + '占比：' + params.data.percent + '%' // marker 是自有的小圆点 颜色跟饼状块的color一致
+              return str
+            }
+          }
+        },
+
       }
     }
   },
