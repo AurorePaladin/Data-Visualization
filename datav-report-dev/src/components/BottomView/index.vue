@@ -108,15 +108,24 @@ export default {
         {
           legendname: '米粥',
           value: 67,
-          percent: '15.48%'
+          percent: '15.48%',
+          itemStyle: { // 饼图块的颜色
+            color: 'pink'
+          }
         },{
           legendname: '蛋挞',
           value: 97,
-          percent: '22.30%'
+          percent: '22.30%',
+          itemStyle: {
+            color: 'purple'
+          }
         },{
           legendname: '饼干',
           value: 92,
-          percent: '21.15%'
+          percent: '21.15%',
+          itemStyle: {
+            color: 'blue'
+          }
         },
       ],
       this.categoryOption = {
@@ -128,6 +137,17 @@ export default {
           },
           left: 20,
           top: 20,
+        },
+        {
+          text: '累计订单量',
+          subtext: '320', // 当加上 subtext 属性后会变成 副标题
+          x: '34.5%',
+          y: '42.5%',
+           textStyle: {
+            fontSize: 14,
+            color: 'gold',
+          },
+          textAlign: 'center',
         }],
         series:[{
           type: 'pie',
@@ -150,7 +170,7 @@ export default {
               smooth: true
             },
             clockwise: true, // 以12点钟方向为基准， true 为顺时针, false 为逆时针
-          }
+          },
         }]
       }
     }
