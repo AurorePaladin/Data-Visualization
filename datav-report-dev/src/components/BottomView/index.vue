@@ -23,7 +23,11 @@
           </div>
           <div class="table-wrapper">
              <el-table :data="tableData">
-                <el-table-column />
+                <el-table-column prop="rank" label="排名" />
+                <el-table-column prop="keyword" label="关键词" />
+                <el-table-column prop="count" label="总搜索量" />
+                <el-table-column prop="users" label="搜索用户数" />
+                <el-table-column prop="range" label="搜索占比" />
               </el-table>
               <el-pagination />
           </div>
@@ -79,7 +83,12 @@ export default {
         }
       },
       searchNumberOption: {},
-      tableData: {},
+      tableData: [
+        { id: 1, rank: 1, keyWord: '北京', count: 100, users: 90, range: '90%'}, // range 表示点击率
+        { id: 2, rank: 2, keyWord: '北京', count: 90, users: 80, range: '80%'},
+        { id: 3, rank: 3, keyWord: '北京', count: 80, users: 70, range: '70%'},
+        { id: 4, rank: 4, keyWord: '北京', count: 70, users: 60, range: '60%'}
+      ],
       radioSelect: '品类',
       categoryOption: {}
     }
