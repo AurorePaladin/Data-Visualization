@@ -72,6 +72,24 @@ export default {
 
     .view {
       flex: 1;
+      
+      .title-wrapper {
+        display: flex;
+        align-items: center;
+        height: 60px;
+        box-sizing: border-box;
+        border-bottom: 1px solid #eee;
+        font-size: 14px;
+        font-weight: 500;
+        padding: 0 0 0 20px;
+      }
+
+      .radio-wrapper {
+          flex: 1;
+          display: flex;
+          justify-content: flex-end;
+          padding-right: 20px;
+        }
     }
 }
 </style>
