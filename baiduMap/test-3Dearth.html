@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <style type="text/css">
+      body,
+      html,
+      #allmap {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        margin: 0;
+        font-family: "微软雅黑";
+      }
+    </style>
+    <script
+      type="text/javascript"
+      src="https://api.map.baidu.com/api?type=webgl&v=1.0&ak=TpThXSSSrjR694QKbmQuFhx5dZ2nycyG"
+    ></script>
+    <title>3D地球</title>
+  </head>
+  <body>
+    <div id="allmap"></div>
+  </body>
+</html>
+<script type="text/javascript">
+  // GL版命名空间为BMapGL
+  // 按住鼠标右键，修改倾斜角和角度
+  var map = new BMapGL.Map("allmap")
+  map.centerAndZoom(new BMapGL.Point(118.5, 27.5), 5)
+  map.enableScrollWheelZoom(true) //开启鼠标滚轮缩放
+  map.setMapType(BMAP_EARTH_MAP) // 设置地图类型为地球模式
+
+  var scaleCtrl = new BMapGL.ScaleControl({ // 设置比例尺控件
+    anchor: BMAP_ANCHOR_TOP_LEFT, // 控件的默认停靠位置 可以通过TOP RIGHT BOTTOM LEFT 设置在界面 左上 右上 右下 左下等位置；  左中（LEFT_CENTER）右中等测试不可行 API只有这4个默认位置
+    offset: new BMapGL.Size(100, 20), // 控件的偏移值 可以手动控制比例尺控件出现在任何位置 出现在左上角时以左上角为0,0坐标原点，数值增加，控件往右下走；右下角时以右下角为0,0坐标原点，数值增加，控件往左上角移动；另外2个方向类似
+  }) 
+  map.addControl(scaleCtrl) // 添加比例尺控件
+
+  var zoomCtrl = new BMapGL.ZoomControl({ // 缩放控件
+    anchor: BMAP_ANCHOR_BOTTOM_RIGHT, // 和比例尺控件属性一样
+    offset: new BMapGL.Size(200, 20)  // 和比例尺控件属性一样
+  }) 
+  map.addControl(zoomCtrl) // 添加缩放控件
+</script>
