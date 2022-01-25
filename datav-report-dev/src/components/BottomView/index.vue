@@ -1,7 +1,6 @@
 <template>
   <div class="bottom-view">
-    这是BottomView
-     <div class="view">
+    <div class="view">
       <el-card shadow="hover">
         <template v-slot:header>
           <div class="title-wrapper">关键词搜索</div>
@@ -20,9 +19,8 @@
                 <v-chart :option="searchUserOption" />
               </div>
             </div>
-          </div>
-          <div class="table-wrapper">
-             <el-table :data="tableData">
+            <div class="table-wrapper">
+              <el-table :data="tableData">
                 <el-table-column prop="rank" label="排名" />
                 <el-table-column prop="keyword" label="关键词" />
                 <el-table-column prop="count" label="总搜索量" />
@@ -36,21 +34,25 @@
                 background
                 @current-change="onPageChange"
               />
+            </div>
           </div>
-          <div class="view">
+        </template>
+      </el-card>
+    </div>
+    <div class="view">
       <el-card shadow="hover">
         <template v-slot:header>
           <div class="title-wrapper">
             <div class="title">分类销售排行</div>
             <div class="radio-wrapper">
-              <el-radio-group v-model="radioSelect" size="small" @change="onCategoryChange">
+              <el-radio-group v-model="radioSelect" size="small">
                 <el-radio-button label="品类"></el-radio-button>
                 <el-radio-button label="商品"></el-radio-button>
               </el-radio-group>
             </div>
           </div>
         </template>
-         <template>
+        <template>
           <div class="chart-wrapper">
             <v-chart :option="categoryOption" />
           </div>
@@ -85,15 +87,21 @@ export default {
           itemStyle: {
             opacity: 0 // 点的透明度
           },
-          smooth: true
+          smooth: true,
+        },
+        grid: {
+            top: 10,
+            right: 0,
+            bottom: 0,
+            left: 0,
         }
       },
       searchNumberOption: {},
       tableData: [
-        { id: 1, rank: 1, keyWord: '北京', count: 100, users: 90, range: '90%'}, // range 表示点击率
-        { id: 2, rank: 2, keyWord: '北京', count: 90, users: 80, range: '80%'},
-        { id: 3, rank: 3, keyWord: '北京', count: 80, users: 70, range: '70%'},
-        { id: 4, rank: 4, keyWord: '北京', count: 70, users: 60, range: '60%'}
+        { id: 1, rank: 1, keyWord: '北京', count: 100, users: 90, range: '90%' }, // range 表示点击率
+        { id: 2, rank: 2, keyWord: '北京', count: 90, users: 80, range: '80%' },
+        { id: 3, rank: 3, keyWord: '北京', count: 80, users: 70, range: '70%' },
+        { id: 4, rank: 4, keyWord: '北京', count: 70, users: 60, range: '60%' }
       ],
       radioSelect: '品类',
       categoryOption: {}
@@ -113,7 +121,8 @@ export default {
             color: 'pink'
           },
           name: '米粥 | 15.48',
-        },{
+        },
+        {
           legendname: '蛋挞',
           value: 97,
           percent: '22.30',
@@ -121,7 +130,8 @@ export default {
             color: 'purple'
           },
           name: '蛋挞 | 22.30%',
-        },{
+        },
+        {
           legendname: '饼干',
           value: 92,
           percent: '21.15',
@@ -130,7 +140,7 @@ export default {
           },
           name: '饼干 | 21.15%',
         },
-      ],
+      ]
       this.categoryOption = {
         title: [{
           text: '品类分布',
@@ -152,12 +162,12 @@ export default {
           },
           textAlign: 'center',
         }],
-        series:[{
+        series: [{
           name: '品类分布',
           type: 'pie',
           data: mockData,
           label: {
-            normal: {
+            directly: {
               show: true,
               position: 'outter', // legendname 在饼图里的显示位置
               formatter: function(params) { // params 指代 mockData
@@ -168,7 +178,7 @@ export default {
           center: ['35%', '55%'], // 饼图圆心的 X Y坐标; % 是【画布的长、宽中 最小 的值，比如画布是 400*300 就以 300 为基准】，以下相同
           radius: ['45%', '60%'], // 45%是内半径，60%是外半径，所以图表为 （外半径60% - 内半径45%） 的环状空心饼图
           labelLine: { // 饼图标签旁边的线条
-            normal: {
+            directly: {
               length: 5, // 斜线
               length2: 3, // 横线
               smooth: true
@@ -197,7 +207,6 @@ export default {
             }
           }
         },
-
       }
     }
   },
@@ -208,12 +217,14 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.bottom-view {
+  .bottom-view {
     display: flex;
     margin-top: 20px;
 
     .view {
       flex: 1;
+      width: 50%;
+      box-sizing: border-box;
 
       &:first-child {
         padding: 0 10px 0 0;
@@ -232,14 +243,15 @@ export default {
         font-size: 14px;
         font-weight: 500;
         padding: 0 0 0 20px;
-      }
 
-      .radio-wrapper {
+        .radio-wrapper {
           flex: 1;
           display: flex;
           justify-content: flex-end;
           padding-right: 20px;
         }
+      }
+
       .chart-wrapper {
         display: flex;
         flex-direction: column;
@@ -285,5 +297,5 @@ export default {
         }
       }
     }
-}
+  }
 </style>
