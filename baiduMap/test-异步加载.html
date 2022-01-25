@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <style type="text/css">
+      body,
+      html,
+      #allmap {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        margin: 0;
+        font-family: "微软雅黑";
+      }
+    </style>
+    <title>异步地图展示</title>
+  </head>
+  <body>
+    <div id="allmap"></div>
+  </body>
+</html>
+<script type="text/javascript">
+  function init() {
+    var map = new BMapGL.Map("allmap") // 创建Map实例
+    var point = new BMapGL.Point(116.404, 39.915) // 初始化中心点坐标
+    map.centerAndZoom(point, 12) // 初始化地图，设置中心点坐标和地图级别
+    map.enableScrollWheelZoom(true) //开启鼠标滚轮缩放
+  }
+
+  function loadScript() {
+    var script = document.createElement("script")
+    script.src =
+      "https://api.map.baidu.com/api?v=1.0&type=webgl&ak=***&callback=init"
+    document.body.appendChild(script)
+  }
+
+  window.onload = loadScript  // onload是等页面所有资源加载完之后再调用 
+</script>
+<!-- 百度地图绘图流程 -->
+<!-- 1. 引入 js 库，注意需要附带申请的密钥 ak
+     2. 编写容器组件
+     3. 初始化 Map 对象
+     4. 初始化 Point 对象
+     5. 设置中心点和地图级别 -->
