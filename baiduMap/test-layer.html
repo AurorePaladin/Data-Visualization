@@ -44,4 +44,16 @@
   )
   var marker = new BMapGL.Marker(point, { icon: myIcon }) // 创建图标实例
   map.addOverlay(marker) // 添加创建的自定义图标
+
+  var polyline = new BMapGL.Polyline([ // 折线 Polyline 有2个参数，1. 坐标数组 2. 折线的样式
+      new BMapGL.Point(116.399, 39.800),
+      new BMapGL.Point(117.899, 39.820),
+      new BMapGL.Point(119.899, 42.820)
+  ], {
+    strokeColor: 'red', // 折线颜色
+    strokeWeight: 5, // 折线线宽
+    strokeOpacity: 0.1 // 折线透明度
+  })
+  map.addOverlay(polyline) // 添加创建的自定义线段
+
 </script>
