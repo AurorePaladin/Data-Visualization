@@ -75,4 +75,26 @@
     strokeStyle: 'solid', // 边线的样式 只有solid 或 dashed
   })
   map.addOverlay(polygon)
+
+  var content = "hail hydra";
+	var label = new BMapGL.Label(content, {       // 创建文本标注
+		position: point,                          // 设置标注的地理位置
+		offset: new BMapGL.Size(200, 20)           // 设置标注的偏移量
+	});
+	label.setStyle({                              // 设置label的样式
+    width: '100px',
+		height: '20px',
+		padding: '20px',
+		color: '#fff',
+    fontSize: '20px',
+    border: '2px solid #1E90FF',
+		background: 'red',
+		whiteSpace: 'wrap',
+		overflow: 'hidden',
+		lineHeight: '20px'
+	});
+	label.addEventListener('click', function(e) {
+		alert(e.target.content);
+	});
+	map.addOverlay(label);                        // 将标注添加到地图中
 </script>
