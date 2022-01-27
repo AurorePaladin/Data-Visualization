@@ -120,4 +120,11 @@
       delay: 3000,         // 设置动画延迟开始时间
       interation: 'INFINITE'        // 设置动画迭代次数
       };
+      var animation = new BMapGL.ViewAnimation(keyFrames, opts);        // 初始化动画实例
+      animation.addEventListener('animationstart', function(e) {        // 监听动画开始事件
+          console.log('start');
+      });
+      animation.addEventListener('animationend', function(e) {        // 监听动画结束事件
+          console.log('end');
+      });
   </script>
