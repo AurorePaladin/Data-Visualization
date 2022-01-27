@@ -43,6 +43,13 @@
       }
   )
   var marker = new BMapGL.Marker(point, { icon: myIcon }) // 创建图标实例
+  var opts = {
+    	width: 250,     // 信息窗口宽度
+    	height: 100,    // 信息窗口高度
+    	title: "标题"  // 信息窗口标题
+		}
+		var infoWindow = new BMapGL.InfoWindow("内容", opts);  // 创建信息窗口对象
+		map.openInfoWindow(infoWindow, point);        // 打开信息窗口
   map.addOverlay(marker) // 添加创建的自定义图标
 
   var polyline = new BMapGL.Polyline([ // 折线 Polyline 有2个参数，1. 坐标数组 2. 折线的样式
