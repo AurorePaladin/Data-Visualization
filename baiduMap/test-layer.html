@@ -56,4 +56,16 @@
   })
   map.addOverlay(polyline) // 添加创建的自定义线段
 
+  var polygon = new BMapGL.Polyline([ // 多边形 Polygon 有2个参数，1. 坐标数组 2. 折线的样式
+      new BMapGL.Point(106.399, 39.800),
+      new BMapGL.Point(107.899, 39.820),
+      new BMapGL.Point(108.899, 40.820)
+  ], {
+    strokeColor: 'red', // 边线颜色
+    fillColor: 'red', // 填充颜色
+    strokeWeight: 5, // 边线线线宽
+    strokeOpacity: 0.5, // 折线透明度
+    strokeStyle: 'solid', // 边线的样式 只有solid 或 dashed
+  })
+  map.addOverlay(polygon)
 </script>
