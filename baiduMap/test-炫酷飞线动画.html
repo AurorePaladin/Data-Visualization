@@ -294,15 +294,15 @@
       var dataSet = new mapv.DataSet(data)
 
       var options = {
-        strokeStyle: "rgba(55, 50, 250, 0.3)",
-        globalCompositeOperation: "lighter",
-        shadowColor: "rgba(55, 50, 250, 0.5)",
-        shadowBlur: 10,
+        strokeStyle: "rgba(55, 50, 250, 0.3)", // 边线颜色
+        globalCompositeOperation: "lighter", // 设置或返回新图像如何绘制到已有的图像上
+        shadowColor: "rgba(55, 50, 250, 0.5)", // 阴影
+        shadowBlur: 10, // 阴影模糊度
         methods: {
           click: function (item) {},
         },
-        lineWidth: 1.0,
-        draw: "simple",
+        lineWidth: 1.0, // 线宽
+        draw: "simple", // 绘制的类型
       }
 
       var mapvLayer = new mapv.baiduMapLayer(map, dataSet, options)
