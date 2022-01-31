@@ -15,7 +15,7 @@ const testPoint = [{
   value: [116.40, 39.91, 200]
 }, {
   name: '上海',
-  value: [121.48, 31.22, 100]
+  value: [121.48, 31.22, 195]
 }]
   export default {
     data() {
@@ -137,11 +137,34 @@ const testPoint = [{
               }]
           }
         },
+        tooltip: {},
         series: [{
           name: 'sales',
-          type: 'scatter',
-          coordinateSystem: 'bmap',
-          data: testPoint,
+          type: 'scatter', // 散点图
+          coordinateSystem: 'bmap', // 坐标体统
+          data: testPoint, // 数据源
+          encode: {
+            value: 2 // 散点 强调使用的数据 这里的 value: 2 表示 value: testPoint[i].value[2]
+          },
+          itemStyle: {
+            color: 'red' // 三点颜色
+          },
+          symbolSize: function(val) {
+            return val[2] / 10 // 散点图大小
+          },
+          label: {
+            show: false, // 是否显示标签
+            position: 'right', // 标签显示位置
+            formatter: function(v) {
+              return `${v.data.name} - ${v.data.value[2]}`
+            }
+          },
+          emphasis: {
+            // 强调 交互功能 鼠标移上去时
+            label: {
+              show: true // 显示标签
+            }
+          }
         }]
       }
     }
