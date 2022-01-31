@@ -4,6 +4,19 @@
 
 <script>
 import 'echarts/extension/bmap/bmap'
+const testPoint = [{
+  name: '海门',
+  value: [121.15, 31.89, 80]
+}, {
+  name: '南京',
+  value: [118.78, 32.04, 100]
+}, {
+  name: '北京',
+  value: [116.40, 39.91, 200]
+}, {
+  name: '上海',
+  value: [121.48, 31.22, 100]
+}]
   export default {
     data() {
       return {
@@ -13,6 +26,11 @@ import 'echarts/extension/bmap/bmap'
     mounted() {
       /* eslint-disable */
       this.options = {
+        title: {
+          text: '外卖数据大盘',
+          subtext: '趋势统计',
+          sublink: 'https://www.baidu.com/'
+        },
         bmap: {
           key: 'G1LFyjrNGIkns5OfpZnrCGAKxpycPLwb',
           center: [104.114129, 37.550339],
@@ -118,7 +136,13 @@ import 'echarts/extension/bmap/bmap'
                 }
               }]
           }
-        }
+        },
+        series: [{
+          name: 'sales',
+          type: 'scatter',
+          coordinateSystem: 'bmap',
+          data: testPoint,
+        }]
       }
     }
   }
