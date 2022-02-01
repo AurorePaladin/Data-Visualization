@@ -192,8 +192,13 @@ const testPoint2 = [{
           },
           hoverAnimate: true,
           rippleEffect: {
-            brushType: 'stroke'
+            brushType: 'stroke' // 水波纹图
           },
+          itemStyle: {
+            color: 'gold', 
+            shadowblur: 10, // 阴影
+            shadowColor: 'blue' // 阴影色
+          }
         }]
       }
     }
