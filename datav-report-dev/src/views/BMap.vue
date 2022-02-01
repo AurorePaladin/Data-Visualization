@@ -10,7 +10,8 @@ const testPoint = [{
 }, {
   name: '南京',
   value: [118.78, 32.04, 100]
-}, {
+}]
+const testPoint2 = [{
   name: '北京',
   value: [116.40, 39.91, 200]
 }, {
@@ -141,7 +142,7 @@ const testPoint = [{
         series: [{
           name: 'sales',
           type: 'scatter', // 散点图
-          coordinateSystem: 'bmap', // 坐标体统
+          coordinateSystem: 'bmap', // 坐标系统
           data: testPoint, // 数据源
           encode: {
             value: 2 // 散点 强调使用的数据 这里的 value: 2 表示 value: testPoint[i].value[2]
@@ -165,6 +166,34 @@ const testPoint = [{
               show: true // 显示标签
             }
           }
+        }, {
+          name: 'Top 2',
+          type: 'effectScatter',
+          coordinateSystem: 'bmap', // 坐标系统
+          data: testPoint2, // 数据源
+          encode: {
+            value: 2 // 散点 强调使用的数据 这里的 value: 2 表示 value: testPoint[i].value[2]
+          },
+          symbolSize: function(val) {
+            return val[2] / 10 // 散点图大小
+          },
+          label: {
+            show: false, // 是否显示标签
+            position: 'right', // 标签显示位置
+            formatter: function(v) {
+              return `${v.data.name} - ${v.data.value[2]}`
+            }
+          },
+          emphasis: {
+            // 强调 交互功能 鼠标移上去时
+            label: {
+              show: true // 显示标签
+            }
+          },
+          hoverAnimate: true,
+          rippleEffect: {
+            brushType: 'stroke'
+          },
         }]
       }
     }
