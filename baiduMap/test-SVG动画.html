@@ -123,5 +123,115 @@
         <animateTransform attributeName="transform" begin="0s" dur="3s" type="scale" from="1" to="2" repeatCount="indefinite" />
       </rect>
     </svg>
+
+    <!-- animateMotion 标签 -->
+    <!-- 按 path 轨迹运动的正方形 -->
+    <svg width="200" height="200" viewBox="0 0 200 200">
+      <rect x="0" y="0" width="10" height="10" fill="red">
+        <animateMotion
+          path="M 10 10 L 110 10 L 110 110 L 10 110 Z"
+          dur="5s"
+          rotate="auto"
+          fill="freeze"
+          repeatCount="indefinite"
+        />
+      </rect>
+      <path id="motion-path" d="M 10 10 L 110 10 L 110 110 L 10 110 Z" fill="none" stroke="green" />
+    </svg>
+
+    <!-- 混合动画 -->
+    <svg viewBox="0 0 200 200" width="200" height="200">
+      <rect x="0" y="0" rx="0" ry="0" width="10" height="10" fill="red">
+        <animateMotion
+          id="forward-rect"
+          path="M 10 10 L 110 10 L 110 110 L 10 110"
+          dur="2s"
+          rotate="0"
+          fill="freeze"
+          begin="0; backward-rect.end + 0.5s"
+        />
+        <animateMotion
+          id="backward-rect"
+          path="M 10 110 L 110 110 L 110 10 L 10 10"
+          dur="2s"
+          rotate="0"  
+          fill="freeze"
+          begin="forward-rect.end + 0.5s"
+        />
+        <!-- rotate: auto -> 0 可以更加流畅 -->
+        <animate
+          id="red-to-blue"
+          attributeType="XML"
+          attributeName="fill"
+          begin="0; blue-to-red.end + 1s"
+          from="red"
+          to="blue"
+          dur="2s"
+          fill="freeze"
+        />
+        <animate
+          id="blue-to-red"
+          attributeType="XML"
+          attributeName="fill"
+          begin="red-to-blue.end + 1s"
+          from="blue"
+          to="red"
+          dur="2s"
+          fill="freeze"
+        />
+      </rect>
+      <path d="M 10 10 L 110 10 L 110 110 L 10 110" fill="none" stroke-width="1" stroke="blue"/>
+  </svg>
+
+  <!-- 点击变色或位移 -->
+  <svg viewBox="0 0 200 200" width="200" height="200">
+    <g id="rect1">
+      <rect x="0" y="0" rx="0" ry="0" width="100" height="100" fill="red">
+        <animate
+          attributeType="XML"
+          attributeName="fill"
+          from="red"
+          to="green"
+          begin="rect1.click"
+          dur="2s"
+          fill="freeze"
+        />
+        <!-- begin: 可填入多个值，支持表达式 -->
+      </rect>
+    </g>
+    <animateTransform
+      attributeType="XML"
+      attributeName="transform"
+      type="translate"
+      from="0, 0"
+      to="50, 50"
+      begin="rect1.click"
+      dur="2s"
+      fill="freeze"
+    />
+    <rect x="0" y="100" width="100" height="100" fill="blue">
+      <animate
+        attributeType="XML"
+        attributeName="fill"
+        from="blue"
+        to="green"
+        begin="rect1.click"
+        dur="2s"
+        fill="freeze"
+      />
+    </rect>
+    <!-- 多个 animateMotion 标签 并行时，后者会覆盖前者 -->
+</svg>
+
+
   </body>
 </html>
+
+<!-- 总结 svg 特点 -->
+<!-- 1.SVG 与 PNG、JPEG 和 GIF 图片相比，拥有很小的尺寸；-->
+<!-- 2.SVG 是矢量图，可以伸缩，适用各种分辨率； -->
+<!-- 3.SVG 采用开放标准，本质是 XML，可以被各种工具读取（浏览器、图片管理器、markdown 等） -->
+<!-- 4.SVG 图像中的文本是可选的，同时也是可搜索的 -->
+<!-- 5.SVG 可以与 CSS 结合，获得更强的扩展性。-->
+
+<!-- 特别注意： animation 有作用域的问题 -->
