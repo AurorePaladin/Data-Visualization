@@ -1,7 +1,7 @@
 import Vue from 'vue'
-import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import BMap from '../views/BMap.vue'
+import { VueRouter ,createRouter, createWebHashHistory } from 'vue-router'
 
 Vue.use(VueRouter)
 
@@ -15,10 +15,16 @@ const routes = [
     path: '/bmap',
     name: 'BMap',
     component: BMap
+  },
+  {
+    path: '/test',
+    name: 'Test',
+    component: () => import(/* webpackChunkName: "test" */ '../views/Test.vue')
   }
 ]
 
-const router = new VueRouter({
+const router = createRouter({
+  history: createWebHashHistory(),
   routes
 })
 
