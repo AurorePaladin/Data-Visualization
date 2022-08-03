@@ -1,12 +1,13 @@
 <template>
   <div class="test">
     <h1>test count: {{count}}</h1>
+    <div>count * 2 = {{doubleCount}}</div>
     <button @click="add">add</button>
   </div>
 </template>
 
 <script>
-  import { ref } from 'vue'
+  import { ref, computed, watch } from 'vue'
 
   export default {
     setup () {
@@ -14,8 +15,13 @@
       const add = () => {
         count.value++
       }
+      watch(() => count.value, val => {
+        console.log(`count is ${val}`)
+      })
+      const doubleCount = computed(() => count.value * 2)
       return {
         count,
+        doubleCount,
         add
       }
     }
