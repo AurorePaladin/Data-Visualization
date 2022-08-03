@@ -2,12 +2,13 @@
   <div class="test">
     <h1>test count: {{count}}</h1>
     <div>count * 2 = {{doubleCount}}</div>
+    <div>state from vuex {{a}}</div>
     <button @click="add">add</button>
   </div>
 </template>
 
 <script>
-  import { ref, computed, watch } from 'vue'
+  import { ref, computed, watch, getCurrentInstance } from 'vue'
 
   export default {
     setup () {
@@ -19,10 +20,14 @@
         console.log(`count is ${val}`)
       })
       const doubleCount = computed(() => count.value * 2)
+      const { ctx } = getCurrentInstance()
+      console.log(ctx.$router.currentRoute.value)
+      const a = computed(() => ctx.$store.state.test.a)
       return {
         count,
         doubleCount,
-        add
+        add,
+        a
       }
     }
   }
