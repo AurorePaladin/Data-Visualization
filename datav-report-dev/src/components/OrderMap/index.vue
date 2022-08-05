@@ -465,6 +465,191 @@
           },
           options: []
         }
+        for (var n = 0; n < year.length; n++) {
+          optionXyMap01.options.push({
+            backgroundColor: '#424446',
+            title: [{
+              text: '慕课外卖销售大盘',
+              subtext: '数据由慕课外卖大数据提供',
+              left: '2%',
+              top: '2%',
+              textStyle: {
+                color: '#fff',
+                fontSize: 35,
+                fontWeight: 700
+              }
+            }, {
+              id: 'statistic',
+              text: year[n] + '销售额统计情况',
+              left: '75%',
+              top: '8%',
+              textStyle: {
+                color: '#fff',
+                fontSize: 25
+              }
+            }],
+            xAxis: {
+              type: 'value',
+              scale: true,
+              position: 'top',
+              min: 0,
+              boundaryGap: false,
+              splitLine: {
+                show: false
+              },
+              axisLine: {
+                show: false
+              },
+              axisTick: {
+                show: false
+              },
+              axisLabel: {
+                margin: 2,
+                textStyle: {
+                  color: '#aaa'
+                }
+              }
+            },
+            yAxis: {
+              type: 'category',
+              //  name: 'TOP 20',
+              nameGap: 16,
+              axisLine: {
+                show: true,
+                lineStyle: {
+                  color: '#ddd'
+                }
+              },
+              axisTick: {
+                show: false,
+                lineStyle: {
+                  color: '#ddd'
+                }
+              },
+              axisLabel: {
+                interval: 0,
+                textStyle: {
+                  color: '#ddd'
+                }
+              },
+              data: categoryData[n]
+            },
+            series: [{
+              // 文字和标志
+              name: 'light',
+              type: 'scatter',
+              coordinateSystem: 'geo',
+              data: convertData(mapData[n]),
+              symbolSize: function(val) {
+                return val[2] / 10
+              },
+              label: {
+                normal: {
+                  formatter: '{b}',
+                  position: 'right',
+                  show: true
+                },
+                emphasis: {
+                  show: true
+                }
+              },
+              itemStyle: {
+                normal: {
+                  color: colors[colorIndex][n]
+                }
+              }
+            }, {
+              type: 'map',
+              map: 'china',
+              geoIndex: 0,
+              aspectScale: 0.75, // 长宽比
+              showLegendSymbol: false, // 存在legend时显示
+              label: {
+                normal: {
+                  show: false
+                },
+                emphasis: {
+                  show: false,
+                  textStyle: {
+                    color: '#fff'
+                  }
+                }
+              },
+              roam: true,
+              itemStyle: {
+                normal: {
+                  areaColor: '#031525',
+                  borderColor: '#FFFFFF'
+                },
+                emphasis: {
+                  areaColor: '#2B91B7'
+                }
+              },
+              animation: false,
+              data: mapData
+            }, { // 地图点的动画效果
+              // name: 'Top 5',
+              type: 'effectScatter',
+              coordinateSystem: 'geo',
+              data: convertData(mapData[n].sort(function(a, b) {
+                return b.value - a.value
+              }).slice(0, 20)),
+              symbolSize: function(val) {
+                return val[2] / 10
+              },
+              showEffectOn: 'render',
+              rippleEffect: {
+                brushType: 'stroke'
+              },
+              hoverAnimation: true,
+              label: {
+                normal: {
+                  formatter: '{b}',
+                  position: 'right',
+                  show: true
+                }
+              },
+              itemStyle: {
+                normal: {
+                  color: colors[colorIndex][n],
+                  shadowBlur: 10,
+                  shadowColor: colors[colorIndex][n]
+                }
+              },
+              zlevel: 1
+            }, { // 地图线的动画效果
+              type: 'lines',
+              zlevel: 2,
+              effect: {
+                show: true,
+                period: 4, // 箭头指向速度，值越小速度越快
+                trailLength: 0.02, // 特效尾迹长度[0,1]值越大，尾迹越长重
+                symbol: 'arrow', // 箭头图标
+                symbolSize: 3 // 图标大小
+              },
+              lineStyle: {
+                normal: {
+                  color: colors[colorIndex][n],
+                  width: 0.1, // 尾迹线条宽度
+                  opacity: 0.5, // 尾迹线条透明度
+                  curveness: 0.3 // 尾迹线条曲直度
+                }
+              },
+              data: convertToLineData(mapData[n], geoGpsMap[n + 1])
+            }, { // 柱状图
+              zlevel: 1.5,
+              type: 'bar',
+              symbol: 'none',
+              itemStyle: {
+                normal: {
+                  color: colors[colorIndex][n]
+                }
+              },
+              data: barData[n]
+            }
+            ]
+          })
+        }
         ECharts.init(document.getElementById('order-map')).setOption(optionXyMap01)
       }
       const update = () => {
