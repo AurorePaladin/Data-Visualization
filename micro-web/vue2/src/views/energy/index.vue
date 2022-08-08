@@ -5,6 +5,8 @@
       <VTabs />
       <!-- 汽车展示列表 -->
       <CarList />
+      <!-- 轮播图 -->
+      <CarSwapper />
     </div>
   </div>
 </template>
@@ -12,12 +14,14 @@
 <script lang="ts">
 import VTabs from '../../components/v-tabs/index.vue'
 import CarList from './components/carList.vue'
+import CarSwapper from './components/carSwapper.vue'
 
 export default {
   name: 'index',
   components: {
     VTabs,
     CarList,
+    CarSwapper,
   },
   data () {
     return {
